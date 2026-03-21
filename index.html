@@ -761,6 +761,102 @@ details .detail-content {
     <strong>A pergunta que importa:</strong> A Maricota gera R$ 60 mil de lucro/ano — mas tem R$ 31 mil presos em peças que nunca saíram. Isso é mais da metade do lucro anual parado em cabide.
   </div>
 
+  <!-- Estrutura de Custos -->
+  <details class="expandable">
+    <summary>💰 Estrutura de custos — quanto custa manter a loja aberta</summary>
+    <div class="expand-content">
+      <div class="kpi-grid">
+        <div class="kpi-card warning">
+          <div class="kpi-label">Custo Fixo/mês</div>
+          <div class="kpi-value orange">R$ 8.591</div>
+          <div class="kpi-note">R$ 103.094/ano</div>
+        </div>
+        <div class="kpi-card warning">
+          <div class="kpi-label">Custo Variável/mês</div>
+          <div class="kpi-value orange">R$ 12.283</div>
+          <div class="kpi-note">R$ 147.397/ano</div>
+        </div>
+        <div class="kpi-card danger">
+          <div class="kpi-label">Ponto de Equilíbrio</div>
+          <div class="kpi-value danger">R$ 20.874/mês</div>
+          <div class="kpi-note">Abaixo disso = prejuízo</div>
+        </div>
+      </div>
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--orange);">
+          <h4 style="color:var(--orange);">Despesas Fixas (R$ 8.591/mês)</h4>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Item</th><th>Mensal</th><th>% Receita</th></tr></thead>
+            <tbody>
+              <tr><td>Colaboradores</td><td class="num">R$ 3.510</td><td class="num">12,8%</td></tr>
+              <tr><td>Aluguel</td><td class="num">R$ 1.700</td><td class="num">6,2%</td></tr>
+              <tr><td>Marketing</td><td class="num">R$ 1.131</td><td class="num">4,1%</td></tr>
+              <tr><td>Impostos</td><td class="num">R$ 895</td><td class="num">3,3%</td></tr>
+              <tr><td>Embalagens</td><td class="num">R$ 565</td><td class="num">2,1%</td></tr>
+              <tr><td>Operacional + outros</td><td class="num">R$ 790</td><td class="num">2,9%</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--pink);">
+          <h4 style="color:var(--pink);">Despesas Variáveis (R$ 12.283/mês)</h4>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Item</th><th>Mensal</th><th>% Receita</th></tr></thead>
+            <tbody>
+              <tr><td>CMV (Custo da Mercadoria)</td><td class="num bold">R$ 9.785</td><td class="num bold">35,6%</td></tr>
+              <tr><td>Montagem da loja</td><td class="num">R$ 892</td><td class="num">3,2%</td></tr>
+              <tr><td>Juros</td><td class="num">R$ 655</td><td class="num">2,4%</td></tr>
+              <tr><td>Pró-labore</td><td class="num">R$ 470</td><td class="num">1,7%</td></tr>
+              <tr><td>Outros</td><td class="num">R$ 481</td><td class="num">1,8%</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+      <div class="insight warning">
+        <strong>R$ 20.874/mês existem vendendo ou não.</strong> Em agosto/2025 a receita líquida foi R$ 19.293 — abaixo do ponto de equilíbrio. Cada real parado em estoque é dinheiro que deveria estar cobrindo custo fixo.
+      </div>
+    </div>
+  </details>
+
+  <!-- Vendedoras e Pagamentos -->
+  <details class="expandable">
+    <summary>👩‍💼 Vendedoras e formas de pagamento</summary>
+    <div class="expand-content">
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--purple);">
+          <h4 style="color:var(--purple);">Vendas por Vendedora (Q1/2026)</h4>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Vendedora</th><th>%</th><th>Ticket</th><th>PA</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Thauany</td><td class="num bold">45,2%</td><td class="num">R$ 208</td><td class="num">2,18</td></tr>
+              <tr><td class="bold">Thalita</td><td class="num bold">35,0%</td><td class="num">R$ 222</td><td class="num">2,56</td></tr>
+              <tr><td>Vanessa</td><td class="num">12,3%</td><td class="num">R$ 219</td><td class="num">2,06</td></tr>
+              <tr><td>Joyce</td><td class="num">7,5%</td><td class="num">R$ 224</td><td class="num">2,42</td></tr>
+            </tbody>
+          </table></div>
+          <div class="insight warning" style="margin-top:8px;">
+            <strong>Thauany + Thalita = 80,2% das vendas.</strong> Se uma sai, perde quase metade do faturamento.
+          </div>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--teal);">
+          <h4 style="color:var(--teal);">Formas de Pagamento</h4>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Forma</th><th>%</th><th>Ticket</th></tr></thead>
+            <tbody>
+              <tr><td class="bold">Crediário</td><td class="num bold purple">72,0%</td><td class="num">R$ 261</td></tr>
+              <tr><td>Pix</td><td class="num">11,8%</td><td class="num">R$ 143</td></tr>
+              <tr><td>Cartão Crédito</td><td class="num">10,6%</td><td class="num">R$ 173</td></tr>
+              <tr><td>Dinheiro</td><td class="num">2,9%</td><td class="num">R$ 128</td></tr>
+              <tr><td>Cartão Débito</td><td class="num">2,6%</td><td class="num">R$ 116</td></tr>
+            </tbody>
+          </table></div>
+          <div class="insight" style="margin-top:8px;">
+            <strong>Crediário tem ticket 2x maior que Pix.</strong> No e-commerce, oferecer 3x sem juros replica essa lógica.
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
   <!-- Receita Mensal -->
   <div class="card">
     <div class="card-title">Receita Mensal 2025</div>
@@ -846,6 +942,26 @@ details .detail-content {
   <div class="insight danger">
     <strong>A torneira de clientes novos quase secou.</strong> De 41/mês em 2023 para 7/mês em 2025. Sem captar, a base só encolhe.
   </div>
+
+  <!-- Distribuição Geográfica -->
+  <details class="expandable">
+    <summary>📍 Distribuição geográfica da base</summary>
+    <div class="expand-content">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Região (DDD)</th><th>Clientes</th><th>%</th><th>Oportunidade</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">DDD 37 (Campos Altos)</td><td class="num bold">571</td><td class="num bold">82,6%</td><td>Base local — loja física + BAG</td></tr>
+          <tr><td class="bold teal">DDD 34 (Triângulo Mineiro)</td><td class="num bold teal">75</td><td class="num bold teal">10,9%</td><td>Maior cluster fora — campanha segmentada</td></tr>
+          <tr><td>DDD 31 (BH/região)</td><td class="num">15</td><td class="num">2,2%</td><td rowspan="3">Dispersos — e-commerce</td></tr>
+          <tr><td>DDD 38</td><td class="num">4</td><td class="num">0,6%</td></tr>
+          <tr><td>Outros DDDs</td><td class="num">26</td><td class="num">3,8%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="insight">
+        <strong>75 clientes no Triângulo Mineiro</strong> = segundo maior mercado. Campanha segmentada de WhatsApp: "Maricota agora entrega na sua casa — frete grátis acima de R$ 199".
+      </div>
+    </div>
+  </details>
 
   <!-- Cadastro -->
   <details>
@@ -1098,6 +1214,63 @@ details .detail-content {
     </div>
   </div>
 
+  <!-- Evolução BAG por ano -->
+  <details class="expandable">
+    <summary>📈 Evolução da conversão BAG por ano</summary>
+    <div class="expand-content">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Ano</th><th>BAGs</th><th>Valor enviado</th><th>Conversão</th></tr></thead>
+        <tbody>
+          <tr><td>2023 (dez)</td><td class="num">66</td><td class="num">R$ 72.699</td><td class="num">8,7%</td></tr>
+          <tr><td>2024</td><td class="num">555</td><td class="num">R$ 672.875</td><td class="num">10,9%</td></tr>
+          <tr><td>2025</td><td class="num">794</td><td class="num">R$ 946.338</td><td class="num">12,1%</td></tr>
+          <tr><td class="bold teal">2026 (jan-mar)</td><td class="num bold">138</td><td class="num bold">R$ 128.221</td><td class="num teal bold">15,2%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="insight">
+        <strong>Conversão melhorando: de 8,7% para 15,2%.</strong> A tendência é positiva — com as 5 regras, a meta de 18-20% é alcançável.
+      </div>
+    </div>
+  </details>
+
+  <!-- Distorções internas -->
+  <details class="expandable">
+    <summary>⚠️ Distorções: BAGs operacionais (Joyce e Thauany)</summary>
+    <div class="expand-content">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nome</th><th>BAGs</th><th>Valor</th><th>Conversão</th><th>Hipótese</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">Joyce (proprietária)</td><td class="num">48</td><td class="num">R$ 57.701</td><td class="num danger bold">2,5%</td><td>BAGs de mostruário/operacionais</td></tr>
+          <tr><td class="bold">Thauany (vendedora)</td><td class="num">25</td><td class="num">R$ 37.112</td><td class="num danger bold">0,5%</td><td>BAGs de mostruário/operacionais</td></tr>
+        </tbody>
+      </table></div>
+      <div class="insight warning">
+        <strong>73 BAGs (R$ 94.813) distorcem os dados.</strong> Se classificar como "internas", a taxa de conversão real sobe de 11,7% para ~14,3%. Primeira ação: reclassificar no Phibo.
+      </div>
+    </div>
+  </details>
+
+  <!-- Distribuição de conversão -->
+  <details class="expandable">
+    <summary>📊 Distribuição das taxas de conversão</summary>
+    <div class="expand-content">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Taxa de conversão</th><th>BAGs</th><th>%</th></tr></thead>
+        <tbody>
+          <tr><td class="danger bold">0% (devolveu tudo)</td><td class="num danger bold">818</td><td class="num danger bold">52,7%</td></tr>
+          <tr><td>1-25%</td><td class="num">318</td><td class="num">20,5%</td></tr>
+          <tr><td>26-50%</td><td class="num">175</td><td class="num">11,3%</td></tr>
+          <tr><td>51-75%</td><td class="num">47</td><td class="num">3,0%</td></tr>
+          <tr><td>76-99%</td><td class="num">13</td><td class="num">0,8%</td></tr>
+          <tr><td class="teal bold">100% (comprou tudo)</td><td class="num teal bold">182</td><td class="num teal bold">11,7%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="insight">
+        <strong>Mais da metade das BAGs voltam inteiras.</strong> O problema não é a BAG como canal — é enviar sem critério. As clientes com 100% de conversão (182 BAGs) validam que, para quem certo, funciona.
+      </div>
+    </div>
+  </details>
+
   <!-- Conversão por tamanho de BAG -->
   <div class="card">
     <div class="card-title">Menos itens = mais conversão</div>
@@ -1280,6 +1453,13 @@ details .detail-content {
     <strong>Íntimos representam 2% das compras atuais mas têm o giro mais rápido.</strong> Aumentar para 12% gera mais caixa com menos risco. <strong>Calça e Legging: não comprar até o estoque atual girar.</strong>
   </div>
 
+  <!-- Alerta de Reposição -->
+  <div class="insight danger">
+    🚨 <strong>ALERTA DE REPOSIÇÃO URGENTE:</strong><br>
+    • <strong>Jaquetas/peças de frio:</strong> 28 peças em estoque, já vendeu 24 no Q1/2026. Vai zerar antes do pico do inverno.<br>
+    • <strong>Inverno juvenil (12-18):</strong> apenas 6 peças — faixa de maior ticket (R$ 119-123). Pedido precisa sair AGORA.
+  </div>
+
   <details>
     <summary>🏷️ Marcas prioritárias</summary>
     <div class="detail-content">
@@ -1322,52 +1502,148 @@ details .detail-content {
     <span class="icon" style="background:var(--teal-light);color:var(--teal);">🚀</span>
     Plano de Ação
   </div>
-  <div class="section-sub">3 fases, 60 dias. Da liquidação ao e-commerce recorrente.</div>
+  <div class="section-sub">Pré-requisitos + 4 semanas + escala. Inverno primeiro — está vendendo agora.</div>
 
+  <!-- Pré-requisitos -->
+  <div class="card" style="border-left:4px solid var(--danger);background:#fff5f5;">
+    <div class="card-title" style="color:var(--danger);">⚠️ Dia 0 — Antes de qualquer coisa</div>
+    <p style="font-size:13px;color:#666;margin-bottom:12px;">Sem esses itens, nada funciona. Zero custo, poucas horas de trabalho.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>O quê</th><th>Custo</th><th>Tempo</th></tr></thead>
+      <tbody>
+        <tr><td class="bold">1</td><td>Validar Nuvem Pago (checkout 100% travado sem isso)</td><td class="num">R$ 0</td><td class="num">1-3 dias</td></tr>
+        <tr><td class="bold">2</td><td>Ativar frete por CEP (Nuvem Envio)</td><td class="num">R$ 0</td><td class="num">30 min</td></tr>
+        <tr><td class="bold">3</td><td>Parcelamento 3x sem juros</td><td class="num">~2-3%/venda</td><td class="num">30 min</td></tr>
+        <tr><td class="bold">4</td><td>Frete grátis acima de R$ 199 (catálogo regular)</td><td class="num">absorvido</td><td class="num">15 min</td></tr>
+        <tr><td class="bold">5</td><td>Fazer pedido-teste completo no site</td><td class="num">R$ 0</td><td class="num">15 min</td></tr>
+        <tr><td class="bold">6</td><td>CPF obrigatório no crediário a partir de agora</td><td class="num">R$ 0</td><td class="num">imediato</td></tr>
+        <tr><td class="bold">7</td><td>Classificar BAGs Joyce/Thauany como "internas"</td><td class="num">R$ 0</td><td class="num">15 min</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- Fases -->
   <div class="phase">
     <div class="phase-dot" style="background:var(--teal);">1</div>
-    <div class="phase-title">Fase 1 — Liquidação como porta de entrada <span class="tag tag-green">Semanas 1-2</span></div>
+    <div class="phase-title">Semana 1 — Inverno no ar (está vendendo AGORA) <span class="tag tag-green">Prioridade</span></div>
     <ul class="phase-items">
-      <li>Subir 362 peças de liquidação com preço De/Por em 4 páginas por idade</li>
-      <li>Configurar frete grátis acima de R$ 199 + parcelamento 3x sem juros</li>
-      <li>WhatsApp individual para 529 inativos: liquidação + frete grátis</li>
-      <li>WhatsApp para 120 clientes fora do DDD 37: "Agora a Maricota entrega na sua casa"</li>
-      <li>Stories diários: produto + preço De/Por + link direto</li>
+      <li><strong>Site:</strong> Subir inverno 2025+2026 (227 SKUs / 282 peças) a preço cheio</li>
+      <li><strong>WhatsApp:</strong> 120 clientes fora DDD 37 → "Maricota agora entrega na sua casa"</li>
+      <li><strong>Stories:</strong> "Coleção inverno chegou no site" + link direto</li>
+      <li><strong>Operação:</strong> Pedido-teste ✓ / Corrigir textos do site</li>
+    </ul>
+    <div class="insight" style="margin-top:8px;font-size:13px;">
+      <strong>Por que inverno primeiro?</strong> Moletom vendeu 61 peças no Q1/2026 (carro-chefe). Jaquetas vão zerar antes do pico. Começar com preço cheio posiciona o e-commerce como loja, não outlet.
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-dot" style="background:var(--pink);">2</div>
+    <div class="phase-title">Semana 2 — Liquidação <span class="tag tag-orange">Liberar capital</span></div>
+    <ul class="phase-items">
+      <li><strong>Site:</strong> Subir liquidação (216 SKUs / 283 peças) com preço De/Por em 4 páginas por idade</li>
+      <li><strong>WhatsApp:</strong> 200 inativos recentes (&lt;6m) → "Peças a partir de R$ 29 + frete grátis acima de R$ 199"</li>
+      <li><strong>Stories:</strong> "Últimas peças por idade" + preço De/Por</li>
+      <li><strong>Operação:</strong> Implementar lista negra de produtos rejeitados em BAG</li>
     </ul>
   </div>
 
   <div class="phase">
-    <div class="phase-dot" style="background:var(--purple);">2</div>
-    <div class="phase-title">Fase 2 — Urgência + coleção inverno <span class="tag tag-purple">Semanas 3-4</span></div>
+    <div class="phase-dot" style="background:var(--purple);">3</div>
+    <div class="phase-title">Semana 3 — Catálogo completo <span class="tag tag-purple">Escala</span></div>
     <ul class="phase-items">
-      <li>Contagem regressiva nos stories: "Quando acabar, sai do site"</li>
-      <li>Subir coleção inverno 2025+2026 (282 peças) a preço cheio</li>
-      <li>WhatsApp segmentado: quem comprou moletom/jaqueta → "Coleção inverno chegou"</li>
-      <li>Pedir foto da criança com a roupa → repostar como prova social</li>
-      <li>Começar a coletar email e CPF em toda venda física</li>
+      <li><strong>Site:</strong> Subir coleções atuais (623 SKUs / 814 peças) a preço cheio</li>
+      <li><strong>WhatsApp:</strong> 200 inativos antigos (6m+) → "Novidades Maricota"</li>
+      <li><strong>Stories:</strong> Produtos + preço + link direto</li>
+      <li><strong>Operação:</strong> 5 regras de BAG implementadas + coletar CPF/email em toda venda</li>
     </ul>
   </div>
 
   <div class="phase">
-    <div class="phase-dot" style="background:var(--pink);">3</div>
-    <div class="phase-title">Fase 3 — E-commerce recorrente <span class="tag tag-orange">Mês 2+</span></div>
+    <div class="phase-dot" style="background:var(--orange);">4</div>
+    <div class="phase-title">Semana 4 — Otimização <span class="tag tag-green">Ajustar</span></div>
     <ul class="phase-items">
-      <li>Catálogo completo: inverno preço cheio + verão com 15-20% off</li>
-      <li>Retargeting via Facebook Pixel (com dados das fases 1 e 2)</li>
-      <li>Google Shopping configurado</li>
-      <li>Investir R$ 5-8k em estoque dedicado ao e-commerce</li>
-      <li>Meta mensal: R$ 3.000-5.000 de faturamento incremental</li>
+      <li><strong>Site:</strong> Ocultar esgotados, ajustar textos, subir catálogo restante</li>
+      <li><strong>WhatsApp:</strong> Follow-up: quem abriu e não comprou</li>
+      <li><strong>Stories:</strong> Urgência ("quando acabar, sai do site") + fotos de clientes</li>
+      <li><strong>Operação:</strong> Avaliar reposição jaquetas + inverno juvenil</li>
     </ul>
   </div>
+
+  <!-- Calendário Visual -->
+  <details class="expandable" open>
+    <summary>📅 Calendário semanal completo</summary>
+    <div class="expand-content">
+      <div class="table-wrap"><table style="font-size:12px;">
+        <thead><tr><th></th><th>Semana 1</th><th>Semana 2</th><th>Semana 3</th><th>Semana 4</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">Site</td><td>Inverno (227 SKUs)</td><td>Liquidação (216 SKUs)</td><td>Catálogo completo (623 SKUs)</td><td>Otimizar + ajustes</td></tr>
+          <tr><td class="bold">WhatsApp</td><td>120 fora DDD 37</td><td>200 inativos recentes</td><td>200 inativos antigos</td><td>Follow-up</td></tr>
+          <tr><td class="bold">Stories</td><td>"Inverno chegou no site"</td><td>"Últimas peças por idade"</td><td>Produto + preço + link</td><td>Urgência + prova social</td></tr>
+          <tr><td class="bold">BAG</td><td>Classificar internas</td><td>Lista negra produtos</td><td>Máx 8 itens + íntimos</td><td>Suspender clientes 0%</td></tr>
+          <tr><td class="bold">Operação</td><td>Pedido-teste + textos</td><td>CPF no crediário</td><td>5 regras BAG</td><td>Reposição inverno</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </details>
+
+  <!-- Quem faz o quê -->
+  <details class="expandable">
+    <summary>👥 Quem faz o quê</summary>
+    <div class="expand-content">
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--purple);">
+          <h4 style="color:var(--purple);">Joyce (Proprietária)</h4>
+          <ul class="phase-items" style="font-size:13px;">
+            <li>Validar preços De/Por da liquidação</li>
+            <li>Configurar frete grátis + 3x sem juros</li>
+            <li>Avaliar reposição jaquetas e inverno juvenil</li>
+            <li>Implementar 5 regras de BAG</li>
+            <li>Exigir CPF no crediário a partir de agora</li>
+            <li>Fazer pedido-teste no site</li>
+          </ul>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--teal);">
+          <h4 style="color:var(--teal);">Social Media (Carol)</h4>
+          <ul class="phase-items" style="font-size:13px;">
+            <li>Cadastrar produtos (Semana 1: inverno, Semana 2: liquidação)</li>
+            <li>Criar 4 páginas por idade + Sobre + Política de Troca</li>
+            <li>Corrigir textos do site ("meninas" em Meninos, "Babys" → "Bebês")</li>
+            <li>Executar calendário WhatsApp + stories</li>
+            <li>Configurar Google Merchant</li>
+            <li>Ativar email de carrinho abandonado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
 
   <div class="insight">
     <strong>Tráfego pago é gasolina. Só faz sentido quando o motor funciona.</strong> Sem conversão validada e sem base de dados, é dinheiro queimado. Primeiro vender com o que tem, depois investir para escalar.
   </div>
 
+  <!-- Pré-requisitos para tráfego pago -->
+  <details class="expandable">
+    <summary>📢 Pré-requisitos para tráfego pago (Fase 3)</summary>
+    <div class="expand-content">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Pré-requisito</th><th>Mínimo</th><th>Status atual</th></tr></thead>
+        <tbody>
+          <tr><td>CPFs coletados na base</td><td class="num bold">50</td><td class="num danger">11,6% (80 de 691)</td></tr>
+          <tr><td>Vendas reais no e-commerce</td><td class="num bold">20</td><td class="num danger">0</td></tr>
+          <tr><td>Eventos no Facebook Pixel</td><td class="num bold">500</td><td class="num danger">~50 (estimado)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="insight warning">
+        <strong>Investir em Meta Ads hoje é queimar dinheiro.</strong> Sem CPFs para lookalike, sem conversão validada, sem dados no Pixel. As fases 1-2 resolvem isso organicamente.
+      </div>
+    </div>
+  </details>
+
   <!-- Loja vs E-commerce -->
-  <details>
+  <details class="expandable">
     <summary>🏪 Estratégias diferentes: Loja Física vs. E-commerce</summary>
-    <div class="detail-content">
+    <div class="expand-content">
       <div class="compare">
         <div class="compare-col">
           <h4>Loja Física</h4>
