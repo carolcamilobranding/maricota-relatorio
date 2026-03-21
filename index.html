@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maricota Store — Diagnóstico Estratégico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* === LOGIN SCREEN === */
+#login-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #2D3436 0%, #1a2021 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+}
+
+#login-screen.hidden { display: none; }
+
+.login-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+.login-box img {
+  width: 180px;
+  margin-bottom: 24px;
+}
+
+.login-box h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2D3436;
+  margin-bottom: 6px;
+}
+
+.login-box p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s;
+  margin-bottom: 12px;
+}
+
+.login-box input:focus { border-color: #2BBDB3; }
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #2BBDB3, #1E9A91);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.login-box button:hover { opacity: .9; }
+
+.login-error {
+  color: #E74C3C;
+  font-size: 13px;
+  margin-top: 8px;
+  display: none;
+}
+
+#app-content { display: none; }
+#app-content.visible { display: block; }
+</style>
+<style>
+:root {
+  --teal: #2BBDB3;
+  --teal-light: #E8F8F7;
+  --teal-dark: #1E9A91;
+  --purple: #9B6FB0;
+  --purple-light: #F3EDF6;
+  --pink: #E8719E;
+  --pink-light: #FDF0F4;
+  --orange: #F0994D;
+  --orange-light: #FEF3E8;
+  --yellow: #E8C33A;
+  --blue: #3DA8D6;
+  --dark: #2D3436;
+  --gray-900: #333;
+  --gray-700: #555;
+  --gray-500: #888;
+  --gray-300: #CCC;
+  --gray-100: #F0F2F5;
+  --bg: #FAFBFC;
+  --card: #FFFFFF;
+  --sidebar-bg: #2D3436;
+  --sidebar-w: 260px;
+  --danger: #E74C3C;
+  --success: #27AE60;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background: var(--bg);
+  color: var(--gray-900);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--sidebar-bg);
+  color: #fff;
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform .3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 24px 20px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.sidebar-logo img {
+  width: 160px;
+  height: auto;
+}
+
+.sidebar-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,.4);
+  padding: 20px 20px 8px;
+  font-weight: 500;
+}
+
+.sidebar nav { flex: 1; padding-bottom: 20px; }
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  transition: all .2s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border-left-color: var(--teal);
+}
+
+.sidebar nav a .nav-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  text-align: center;
+}
+
+.sidebar-footer a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+/* Mobile hamburger */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  background: var(--dark);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 90;
+}
+
+/* ===== MAIN ===== */
+.main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  color: #fff;
+  padding: 48px 40px 40px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.header p {
+  font-size: 15px;
+  opacity: .85;
+  font-weight: 300;
+}
+
+/* Content area */
+.content {
+  padding: 32px 40px 60px;
+  max-width: 1100px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 48px;
+  scroll-margin-top: 24px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title .icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.section-sub {
+  color: var(--gray-500);
+  font-size: 13px;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+/* KPI Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--gray-100);
+}
+
+.kpi-card.highlight {
+  border-left: 4px solid var(--teal);
+}
+
+.kpi-card.warning {
+  border-left: 4px solid var(--orange);
+}
+
+.kpi-card.danger {
+  border-left: 4px solid var(--danger);
+}
+
+.kpi-label {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 4px;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.kpi-value.teal { color: var(--teal-dark); }
+.kpi-value.orange { color: var(--orange); }
+.kpi-value.danger { color: var(--danger); }
+.kpi-value.purple { color: var(--purple); }
+
+.kpi-note {
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+/* Cards / Boxes */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--gray-100);
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+
+/* Insight box */
+.insight {
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--dark);
+}
+
+.insight strong { color: var(--teal-dark); }
+
+.insight.warning {
+  background: var(--orange-light);
+  border-left-color: var(--orange);
+}
+
+.insight.warning strong { color: var(--orange); }
+
+.insight.danger {
+  background: var(--pink-light);
+  border-left-color: var(--danger);
+}
+
+.insight.danger strong { color: var(--danger); }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead th {
+  background: var(--gray-100);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--gray-700);
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  border-bottom: 2px solid var(--gray-300);
+}
+
+tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+tbody tr:hover { background: var(--gray-100); }
+
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.bold { font-weight: 600; }
+td.teal { color: var(--teal-dark); font-weight: 600; }
+td.danger { color: var(--danger); font-weight: 600; }
+td.orange { color: var(--orange); font-weight: 600; }
+
+/* Chart containers */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Expandable / Accordion */
+details {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--gray-100);
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+
+details summary {
+  padding: 14px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--dark);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+details summary::before {
+  content: '▸';
+  transition: transform .2s;
+  color: var(--gray-500);
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details summary::-webkit-details-marker { display: none; }
+
+details .detail-content {
+  padding: 0 20px 20px;
+}
+
+/* Funnel */
+.funnel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 24px 0;
+}
+
+.funnel-step {
+  padding: 14px 24px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  position: relative;
+  transition: transform .2s;
+}
+
+.funnel-step:hover { transform: scale(1.02); }
+
+.funnel-arrow {
+  font-size: 18px;
+  color: var(--gray-300);
+}
+
+/* Phase timeline */
+.phase {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 24px;
+}
+
+.phase::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 28px;
+  bottom: -24px;
+  width: 2px;
+  background: var(--gray-300);
+}
+
+.phase:last-child::before { display: none; }
+
+.phase-dot {
+  position: absolute;
+  left: 0; top: 4px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+  color: #fff;
+}
+
+.phase-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.phase-items {
+  list-style: none;
+  font-size: 13px;
+}
+
+.phase-items li {
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.phase-items li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+/* Comparison columns */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.compare-col {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--gray-100);
+}
+
+.compare-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gray-100);
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.tag-green { background: #E8F5E9; color: #2E7D32; }
+.tag-red { background: #FFEBEE; color: #C62828; }
+.tag-orange { background: #FFF3E0; color: #E65100; }
+.tag-purple { background: var(--purple-light); color: var(--purple); }
+
+/* Footer */
+.footer {
+  background: var(--dark);
+  color: rgba(255,255,255,.6);
+  padding: 32px 40px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.footer a { color: var(--teal); text-decoration: none; }
+.footer-brand { margin-bottom: 8px; }
+.footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .hamburger { display: flex; }
+  .overlay.open { display: block; }
+  .main { margin-left: 0; }
+  .header { padding: 32px 20px 28px; }
+  .header h1 { font-size: 22px; }
+  .content { padding: 20px 16px 40px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-row { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .kpi-value { font-size: 22px; }
+}
+
+@media (max-width: 500px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+
+/* Scroll bar sidebar */
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 4px; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section { animation: fadeInUp .4s ease-out; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <img src="Identidade Maricota/logo-horizontal-roupa-infantil.png" alt="Maricota Store" onerror="this.style.display='none'">
+    <h2>Relatório Estratégico</h2>
+    <p>Digite a senha para acessar</p>
+    <input type="password" id="login-password" placeholder="Senha" onkeydown="if(event.key==='Enter')checkPassword()">
+    <button onclick="checkPassword()">Acessar</button>
+    <div class="login-error" id="login-error">Senha incorreta</div>
+  </div>
+</div>
+
+<div id="app-content">
+<!-- Hamburger -->
+<button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <img src="Identidade Maricota/logo-horizontal-roupa-infantil.png" alt="Maricota Store" onerror="this.style.display='none'">
+  </div>
+
+  <div class="sidebar-label">Diagnóstico</div>
+  <nav>
+    <a href="#visao-geral" class="active"><span class="nav-icon">📊</span> Visão Geral</a>
+    <a href="#clientes"><span class="nav-icon">👥</span> Base de Clientes</a>
+    <a href="#ecommerce"><span class="nav-icon">🛒</span> E-commerce</a>
+    <a href="#estoque"><span class="nav-icon">📦</span> Estoque</a>
+    <a href="#giro"><span class="nav-icon">🔄</span> Margem vs. Giro</a>
+    <a href="#bags"><span class="nav-icon">👜</span> BAGs</a>
+    <a href="#mix"><span class="nav-icon">🎯</span> Mix de Compra</a>
+
+    <div class="sidebar-label">Plano de Ação</div>
+    <a href="#plano"><span class="nav-icon">🚀</span> Fases</a>
+    <a href="#metas"><span class="nav-icon">🎯</span> Metas</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    Diagnóstico por<br>
+    <a href="https://carolcamilobranding.com.br" target="_blank">Carol Camilo Branding</a><br>
+    Março 2026
+  </div>
+</aside>
+
+<!-- Main -->
+<div class="main">
+
+<div class="header">
+  <h1>Diagnóstico Estratégico — Maricota Store</h1>
+  <p>Estoque · Operação · E-commerce · Março 2026</p>
+</div>
+
+<div class="content">
+
+<!-- ==================== VISÃO GERAL ==================== -->
+<div class="section" id="visao-geral">
+  <div class="section-title">
+    <span class="icon" style="background:var(--teal-light);color:var(--teal);">📊</span>
+    A base é sólida
+  </div>
+  <div class="section-sub">Resultado 2025 — A Maricota fatura R$ 20 mil/mês com relacionamento e confiança.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Faturamento 2025</div>
+      <div class="kpi-value teal">R$ 329.579</div>
+      <div class="kpi-note">~R$ 27,5k/mês</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Lucro Líquido</div>
+      <div class="kpi-value teal">R$ 60.231</div>
+      <div class="kpi-note">Margem líquida 19,4%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Ticket Médio</div>
+      <div class="kpi-value">R$ 262</div>
+      <div class="kpi-note">Mar/2026</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Peças / Atendimento</div>
+      <div class="kpi-value">2,83</div>
+      <div class="kpi-note">PA Mar/2026</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Crediário</div>
+      <div class="kpi-value purple">72%</div>
+      <div class="kpi-note">das vendas</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-label">Capital Parado</div>
+      <div class="kpi-value orange">R$ 31 mil</div>
+      <div class="kpi-note">63% do estoque nunca vendeu</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>A pergunta que importa:</strong> A Maricota gera R$ 60 mil de lucro/ano — mas tem R$ 31 mil presos em peças que nunca saíram. Isso é mais da metade do lucro anual parado em cabide.
+  </div>
+
+  <!-- Receita Mensal -->
+  <div class="card">
+    <div class="card-title">Receita Mensal 2025</div>
+    <div class="chart-container" style="max-width:100%;height:300px;">
+      <canvas id="chartReceita"></canvas>
+    </div>
+  </div>
+
+  <details>
+    <summary>Ver tabela completa do DRE</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Mês</th><th>Receita Bruta</th><th>Receita Líquida</th><th>Lucro</th><th>Vendas</th><th>Ticket</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Janeiro</td><td class="num">R$ 21.387</td><td class="num">R$ 15.326</td><td class="num danger">-R$ 3.631</td><td class="num">111</td><td class="num">R$ 138</td></tr>
+            <tr><td>Fevereiro</td><td class="num">R$ 23.615</td><td class="num">R$ 23.144</td><td class="num">R$ 4.755</td><td class="num">111</td><td class="num">R$ 209</td></tr>
+            <tr><td>Março</td><td class="num">R$ 23.993</td><td class="num">R$ 23.361</td><td class="num">R$ 4.921</td><td class="num">88</td><td class="num">R$ 265</td></tr>
+            <tr><td>Abril</td><td class="num">R$ 28.548</td><td class="num">R$ 28.236</td><td class="num">R$ 7.420</td><td class="num">115</td><td class="num">R$ 246</td></tr>
+            <tr><td>Maio</td><td class="num">R$ 32.974</td><td class="num">R$ 32.444</td><td class="num teal">R$ 9.392</td><td class="num">131</td><td class="num">R$ 248</td></tr>
+            <tr><td>Junho</td><td class="num">R$ 26.483</td><td class="num">R$ 26.259</td><td class="num">R$ 6.801</td><td class="num">114</td><td class="num">R$ 230</td></tr>
+            <tr><td>Julho</td><td class="num">R$ 33.819</td><td class="num">R$ 27.758</td><td class="num">R$ 4.189</td><td class="num">125</td><td class="num">R$ 222</td></tr>
+            <tr><td>Agosto</td><td class="num">R$ 19.811</td><td class="num">R$ 19.293</td><td class="num">R$ 810</td><td class="num">94</td><td class="num">R$ 205</td></tr>
+            <tr><td>Setembro</td><td class="num">R$ 27.428</td><td class="num">R$ 27.168</td><td class="num">R$ 5.919</td><td class="num">118</td><td class="num">R$ 230</td></tr>
+            <tr><td>Outubro</td><td class="num">R$ 22.675</td><td class="num">R$ 22.522</td><td class="num">R$ 2.260</td><td class="num">92</td><td class="num">R$ 245</td></tr>
+            <tr><td>Novembro</td><td class="num">R$ 27.230</td><td class="num">R$ 24.760</td><td class="num">R$ 4.069</td><td class="num">109</td><td class="num">R$ 227</td></tr>
+            <tr><td class="bold">Dezembro</td><td class="num bold">R$ 41.617</td><td class="num bold">R$ 40.452</td><td class="num teal bold">R$ 13.326</td><td class="num bold">174</td><td class="num">R$ 232</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight warning">
+        <strong>Janeiro é o único mês com prejuízo</strong> (-R$ 3.631). Descontos agressivos pós-Natal. <strong>Dezembro concentra 22% do lucro anual</strong> — preparação começa em outubro.
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== CLIENTES ==================== -->
+<div class="section" id="clientes">
+  <div class="section-title">
+    <span class="icon" style="background:var(--purple-light);color:var(--purple);">👥</span>
+    Base de Clientes
+  </div>
+  <div class="section-sub">691 clientes cadastrados. A mina de ouro que ninguém está minerando.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card danger">
+      <div class="kpi-label">Inativos</div>
+      <div class="kpi-value danger">529</div>
+      <div class="kpi-note">77% da base — não comprou no semestre</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Ativos Mar/26</div>
+      <div class="kpi-value">62</div>
+      <div class="kpi-note">9% da base</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Com telefone</div>
+      <div class="kpi-value teal">100%</div>
+      <div class="kpi-note">Todos alcançáveis via WhatsApp</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-label">Fora do DDD 37</div>
+      <div class="kpi-value">120</div>
+      <div class="kpi-note">Público natural do e-commerce</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>529 pessoas já confiam na Maricota.</strong> Não precisa convencer da qualidade — só dar um motivo para voltar. E todas têm WhatsApp.
+  </div>
+
+  <!-- Captação -->
+  <div class="card">
+    <div class="card-title">Captação de novos clientes caiu 83%</div>
+    <div class="chart-container" style="max-width:100%;height:260px;">
+      <canvas id="chartCaptacao"></canvas>
+    </div>
+  </div>
+
+  <div class="insight danger">
+    <strong>A torneira de clientes novos quase secou.</strong> De 41/mês em 2023 para 7/mês em 2025. Sem captar, a base só encolhe.
+  </div>
+
+  <!-- Cadastro -->
+  <details>
+    <summary>📋 Qualidade do cadastro — o que impede marketing digital</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dado</th><th>Situação</th><th>Impacto</th></tr></thead>
+          <tbody>
+            <tr><td>Email</td><td class="danger bold">1 de 691 (0,1%)</td><td>Impossível email marketing</td></tr>
+            <tr><td>CPF</td><td class="orange bold">80 de 691 (11,6%)</td><td>Impossível lookalike Meta Ads</td></tr>
+            <tr><td>Aniversário</td><td class="orange bold">228 com data "01/01" (falsa)</td><td>Impossível campanha de aniversário</td></tr>
+            <tr><td>Endereço</td><td class="orange bold">424 sem endereço (61%)</td><td>Impossível segmentar por região</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight warning">
+        <strong>Investir em Meta Ads sem CPF na base é como imprimir panfleto e jogar do avião.</strong> CPF deveria ser obrigatório no crediário — a cliente já dá nome e endereço.
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== E-COMMERCE ==================== -->
+<div class="section" id="ecommerce">
+  <div class="section-title">
+    <span class="icon" style="background:var(--pink-light);color:var(--pink);">🛒</span>
+    E-commerce
+  </div>
+  <div class="section-sub">1.859 visitas. Zero vendas. As pessoas chegam — a loja não deixa comprar.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Visitas únicas</div>
+      <div class="kpi-value">1.859</div>
+      <div class="kpi-note">Jan-Mar/2026</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Vendas concluídas</div>
+      <div class="kpi-value danger">0</div>
+      <div class="kpi-note">Zero conversão</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Catálogo esgotado</div>
+      <div class="kpi-value danger">72%</div>
+      <div class="kpi-note">79 de 110 produtos</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-label">Frete fixo</div>
+      <div class="kpi-value orange">R$ 20</div>
+      <div class="kpi-note">28% do valor de um produto de R$ 69</div>
+    </div>
+  </div>
+
+  <!-- Funil -->
+  <div class="card">
+    <div class="card-title">Funil de conversão</div>
+    <div class="funnel">
+      <div class="funnel-step" style="background:var(--teal);width:90%;max-width:500px;">1.859 visitas únicas</div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-step" style="background:var(--blue);width:60%;max-width:340px;">4 carrinhos criados</div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-step" style="background:var(--orange);width:45%;max-width:260px;">3 chegaram ao endereço</div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-step" style="background:var(--danger);width:35%;max-width:200px;font-weight:700;">0 selecionaram pagamento ⛔</div>
+    </div>
+  </div>
+
+  <div class="insight danger">
+    <strong>Checkout 100% bloqueado.</strong> A identidade do Nuvem Pago não foi validada. 3 pessoas percorreram TODO o processo de compra e pararam na última etapa — porque não havia opção de pagamento.
+  </div>
+
+  <!-- 3 Bloqueadores -->
+  <div class="card">
+    <div class="card-title">3 bloqueadores que travam a venda</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Problema</th><th>Impacto</th><th>Solução</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">1</td><td class="danger bold">Nuvem Pago não validado</td><td>Checkout 100% travado</td><td>Validar identidade (24h)</td></tr>
+          <tr><td class="bold">2</td><td class="orange bold">72% do catálogo esgotado</td><td>4 produtos mais visitados: ESGOTADO</td><td>Repor top 20 + ocultar esgotados</td></tr>
+          <tr><td class="bold">3</td><td class="orange bold">Frete fixo R$ 20</td><td>28% do valor de produto de R$ 69</td><td>Frete grátis acima de R$ 199</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <details>
+    <summary>📢 Por que a campanha de setembro/2025 não funcionou</summary>
+    <div class="detail-content">
+      <p style="font-size:14px;margin-bottom:12px;">Em setembro/2025 foi feita campanha de lançamento com narrativa bem construída e conteúdo para redes sociais.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fator</th><th>Detalhe</th></tr></thead>
+          <tbody>
+            <tr><td>Checkout bloqueado</td><td>Mesmo querendo comprar, a cliente não conseguia pagar</td></tr>
+            <tr><td>Catálogo esgotado</td><td>Visitantes encontravam "ESGOTADO" nos itens de interesse</td></tr>
+            <tr><td>Campanha passiva</td><td>Só feed/stories, sem WhatsApp individual ou ação direta</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">
+        <strong>A campanha não falhou — foi impossível de converter.</strong> O conteúdo era bom. Mas não importa quão bonito é o convite se a porta do restaurante está trancada.
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== ESTOQUE ==================== -->
+<div class="section" id="estoque">
+  <div class="section-title">
+    <span class="icon" style="background:var(--orange-light);color:var(--orange);">📦</span>
+    Raio-X do Estoque
+  </div>
+  <div class="section-sub">R$ 31 mil em peças que nunca venderam — mais da metade do lucro anual.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Total em estoque</div>
+      <div class="kpi-value">1.381</div>
+      <div class="kpi-note">unidades / 1.068 SKUs</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Capital investido</div>
+      <div class="kpi-value">R$ 44.685</div>
+      <div class="kpi-note">a custo</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Nunca venderam</div>
+      <div class="kpi-value danger">869 un.</div>
+      <div class="kpi-note">R$ 31.001 parados</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-label">Custo de oportunidade</div>
+      <div class="kpi-value orange">R$ 4.340</div>
+      <div class="kpi-note">por ano (Selic 14%)</div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="card">
+      <div class="card-title">Composição do estoque</div>
+      <div class="chart-container" style="height:250px;max-width:100%;">
+        <canvas id="chartEstoque"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Reclassificação com dados de BAG</div>
+      <div class="chart-container" style="height:250px;max-width:100%;">
+        <canvas id="chartEstoqueBAG"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight warning">
+    <strong>Dos R$ 31 mil parados:</strong> R$ 20 mil circularam em BAGs e foram rejeitados (a cliente viu, experimentou e devolveu). R$ 11 mil nunca saíram da loja. Problemas diferentes, soluções diferentes.
+  </div>
+
+  <details>
+    <summary>📊 Giro por categoria — o que gira vs. o que encalha</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Categoria</th><th>Vendido 6m</th><th>Estoque</th><th>Meses de estoque</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Íntimos</td><td class="num">79</td><td class="num">25</td><td class="num teal bold">1,9</td><td><span class="tag tag-green">Saudável</span></td></tr>
+            <tr><td>Vestido</td><td class="num">135</td><td class="num">94</td><td class="num teal">4,2</td><td><span class="tag tag-green">Saudável</span></td></tr>
+            <tr><td>Conj. Fofura</td><td class="num">26</td><td class="num">19</td><td class="num teal">4,4</td><td><span class="tag tag-green">Saudável</span></td></tr>
+            <tr><td>Pijama</td><td class="num">27</td><td class="num">26</td><td class="num">5,8</td><td><span class="tag tag-green">Saudável</span></td></tr>
+            <tr><td>Body</td><td class="num">17</td><td class="num">17</td><td class="num">6,0</td><td><span class="tag tag-orange">Atenção</span></td></tr>
+            <tr><td>Blusa/Camiseta</td><td class="num">136</td><td class="num">145</td><td class="num">6,4</td><td><span class="tag tag-orange">Atenção</span></td></tr>
+            <tr><td>Macacão</td><td class="num">78</td><td class="num">87</td><td class="num">6,7</td><td><span class="tag tag-orange">Atenção</span></td></tr>
+            <tr><td>Calça</td><td class="num">57</td><td class="num">119</td><td class="num danger bold">12,5</td><td><span class="tag tag-red">Crítico</span></td></tr>
+            <tr><td>Conj. Verão</td><td class="num">41</td><td class="num">112</td><td class="num danger bold">16,4</td><td><span class="tag tag-red">Crítico</span></td></tr>
+            <tr><td>Conj. Moletom</td><td class="num">19</td><td class="num">91</td><td class="num danger bold">28,7</td><td><span class="tag tag-red">Crítico</span></td></tr>
+            <tr><td>Blusa Meia Est.</td><td class="num">16</td><td class="num">79</td><td class="num danger bold">29,6</td><td><span class="tag tag-red">Crítico</span></td></tr>
+            <tr><td>Conj. Premium</td><td class="num">3</td><td class="num">94</td><td class="num danger bold">188</td><td><span class="tag tag-red">Emergência</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== MARGEM VS GIRO ==================== -->
+<div class="section" id="giro">
+  <div class="section-title">
+    <span class="icon" style="background:var(--teal-light);color:var(--teal);">🔄</span>
+    Margem vs. Giro
+  </div>
+  <div class="section-sub">Margem alta não é lucro se a peça não sai.</div>
+
+  <div class="compare">
+    <div class="compare-col" style="border-top:3px solid var(--teal);">
+      <h4 style="color:var(--teal);">Kit Calcinha</h4>
+      <div class="kpi-label">Margem</div>
+      <div style="font-size:20px;font-weight:600;">52%</div>
+      <div class="kpi-label" style="margin-top:8px;">Giro</div>
+      <div style="font-size:20px;font-weight:600;color:var(--teal);">1,9 meses</div>
+      <div class="kpi-label" style="margin-top:8px;">Lucro por peça</div>
+      <div style="font-size:16px;">R$ 50</div>
+      <div class="kpi-label" style="margin-top:8px;">Em 15 meses (8 giros)</div>
+      <div style="font-size:22px;font-weight:700;color:var(--teal);">R$ 400</div>
+    </div>
+    <div class="compare-col" style="border-top:3px solid var(--danger);">
+      <h4 style="color:var(--danger);">Conj. Premium</h4>
+      <div class="kpi-label">Margem</div>
+      <div style="font-size:20px;font-weight:600;">65%</div>
+      <div class="kpi-label" style="margin-top:8px;">Giro</div>
+      <div style="font-size:20px;font-weight:600;color:var(--danger);">188 meses</div>
+      <div class="kpi-label" style="margin-top:8px;">Lucro por peça</div>
+      <div style="font-size:16px;">R$ 106</div>
+      <div class="kpi-label" style="margin-top:8px;">Em 15 meses (parado)</div>
+      <div style="font-size:22px;font-weight:700;color:var(--danger);">R$ 106</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>O Kit Calcinha com margem "pior" gera 4x mais lucro no mesmo período.</strong> Giro vence margem. O dinheiro não pode ficar parado — ele precisa trabalhar.
+  </div>
+</div>
+
+<!-- ==================== BAGs ==================== -->
+<div class="section" id="bags">
+  <div class="section-title">
+    <span class="icon" style="background:var(--purple-light);color:var(--purple);">👜</span>
+    BAGs — O canal invisível
+  </div>
+  <div class="section-sub">~35% da receita vem de BAGs. Mas 88% do que sai volta.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Valor enviado (2025)</div>
+      <div class="kpi-value">R$ 946k</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Receita convertida</div>
+      <div class="kpi-value teal">R$ 115k</div>
+      <div class="kpi-note">~35% da receita total</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-label">Taxa de conversão</div>
+      <div class="kpi-value orange">12,1%</div>
+      <div class="kpi-note">R$ 88 voltam a cada R$ 100</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">BAGs 0% conversão</div>
+      <div class="kpi-value danger">52,7%</div>
+      <div class="kpi-note">Devolveram tudo</div>
+    </div>
+  </div>
+
+  <!-- Conversão por tamanho de BAG -->
+  <div class="card">
+    <div class="card-title">Menos itens = mais conversão</div>
+    <div class="chart-container" style="max-width:100%;height:260px;">
+      <canvas id="chartBAGSize"></canvas>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>BAGs de 1-3 itens convertem 37%</strong> — quase 5x mais que BAGs de 21+ itens (7,6%). Quanto mais opções, mais a cliente paralisa e devolve tudo.
+  </div>
+
+  <!-- Conversão por categoria -->
+  <div class="card">
+    <div class="card-title">Conversão por categoria em BAG</div>
+    <div class="chart-container" style="max-width:100%;height:340px;">
+      <canvas id="chartBAGCategoria"></canvas>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Íntimos convertem 21,3% em BAG — quase o dobro da média.</strong> Vestidos convertem só 8,6% (a cliente precisa experimentar pessoalmente). Jaquetas: 7% — vender na loja, não em BAG.
+  </div>
+
+  <!-- Clientes BAG -->
+  <details>
+    <summary>👥 Quem compra vs. quem só passeia</summary>
+    <div class="detail-content">
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--teal);">
+          <h4 style="color:var(--teal);">Melhores clientes BAG</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Cliente</th><th>BAGs</th><th>Conv.</th></tr></thead>
+              <tbody>
+                <tr><td>Tayline Rodrigues</td><td class="num">8</td><td class="num teal bold">84%</td></tr>
+                <tr><td>Sara Guimarães</td><td class="num">5</td><td class="num teal bold">81%</td></tr>
+                <tr><td>Lorena Gasparina</td><td class="num">7</td><td class="num teal bold">60%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--danger);">
+          <h4 style="color:var(--danger);">Piores clientes BAG</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Cliente</th><th>BAGs</th><th>Conv.</th></tr></thead>
+              <tbody>
+                <tr><td>Joice Rocha</td><td class="num">10</td><td class="num danger bold">1%</td></tr>
+                <tr><td>Natalie Salao</td><td class="num">19</td><td class="num danger bold">4%</td></tr>
+                <tr><td>Walina Barbara</td><td class="num">5</td><td class="num danger bold">0%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>Tayline compra 84% do que recebe. Walina devolveu tudo 5 vezes.</strong> Tratar as duas igual é desperdiçar as duas.
+      </div>
+    </div>
+  </details>
+
+  <!-- 4 regras -->
+  <div class="card">
+    <div class="card-title">4 regras para BAGs com mais resultado</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Regra</th><th>Por quê</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">1</td><td>Máximo 8 itens por BAG</td><td>BAGs acima de 10 itens convertem menos de 12%</td></tr>
+          <tr><td class="bold">2</td><td>Priorizar Íntimos e Meias em toda BAG</td><td>21% de conversão — funcionam como "porta de entrada"</td></tr>
+          <tr><td class="bold">3</td><td>Teto de 2 BAGs devolvidas 100%</td><td>Parar de enviar até a cliente vir à loja</td></tr>
+          <tr><td class="bold">4</td><td>BAGs maiores para quem converte 30%+</td><td>Tayline (84%) merece mais opções</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight">
+      <strong>Meta:</strong> subir conversão de 12% para 18-20%.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MIX DE COMPRA ==================== -->
+<div class="section" id="mix">
+  <div class="section-title">
+    <span class="icon" style="background:var(--teal-light);color:var(--teal);">🎯</span>
+    Mix Ideal para Próxima Compra
+  </div>
+  <div class="section-sub">O que comprar, de quem, e em que proporção.</div>
+
+  <div class="chart-row">
+    <div class="card">
+      <div class="card-title">Proporção por categoria</div>
+      <div class="chart-container" style="height:280px;max-width:100%;">
+        <canvas id="chartMix"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Split por gênero</div>
+      <div class="chart-container" style="height:280px;max-width:100%;">
+        <canvas id="chartGenero"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Íntimos representam 2% das compras atuais mas têm o giro mais rápido.</strong> Aumentar para 12% gera mais caixa com menos risco. <strong>Calça e Legging: não comprar até o estoque atual girar.</strong>
+  </div>
+
+  <details>
+    <summary>🏷️ Marcas prioritárias</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Margem</th><th>Estoque</th><th>Prioridade</th></tr></thead>
+          <tbody>
+            <tr><td>Pingo Lele</td><td class="num teal bold">71,4%</td><td class="num">28</td><td><span class="tag tag-green">Alta</span></td></tr>
+            <tr><td>Rovitex</td><td class="num">65,3%</td><td class="num">273</td><td><span class="tag tag-green">Core</span></td></tr>
+            <tr><td>Elian</td><td class="num">66,6%</td><td class="num">224</td><td><span class="tag tag-green">Core</span></td></tr>
+            <tr><td>Boca Grande</td><td class="num teal">69,4%</td><td class="num">23</td><td><span class="tag tag-green">Alta</span></td></tr>
+            <tr><td>José Leite</td><td class="num">68,0%</td><td class="num">24</td><td><span class="tag tag-green">Boa</span></td></tr>
+            <tr><td>Colorir</td><td class="num danger">52,6%</td><td class="num">24</td><td><span class="tag tag-red">Reduzir</span></td></tr>
+            <tr><td>Marlon</td><td class="num danger">57,2%</td><td class="num">26</td><td><span class="tag tag-red">Reduzir</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📐 Tamanhos prioritários</summary>
+    <div class="detail-content">
+      <p style="font-size:14px;margin-bottom:8px;">Tamanhos que representam 58% das vendas:</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="tag tag-green" style="font-size:14px;padding:6px 14px;">Tam 4</span>
+        <span class="tag tag-green" style="font-size:14px;padding:6px 14px;">Tam 6</span>
+        <span class="tag tag-green" style="font-size:14px;padding:6px 14px;">Tam 8</span>
+        <span class="tag tag-green" style="font-size:14px;padding:6px 14px;">Tam 3</span>
+        <span class="tag tag-green" style="font-size:14px;padding:6px 14px;">Tam 12</span>
+      </div>
+      <p style="font-size:13px;color:var(--gray-500);margin-top:8px;">Faixa etária core: 2 a 12 anos.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== PLANO DE AÇÃO ==================== -->
+<div class="section" id="plano">
+  <div class="section-title">
+    <span class="icon" style="background:var(--teal-light);color:var(--teal);">🚀</span>
+    Plano de Ação
+  </div>
+  <div class="section-sub">3 fases, 60 dias. Da liquidação ao e-commerce recorrente.</div>
+
+  <div class="phase">
+    <div class="phase-dot" style="background:var(--teal);">1</div>
+    <div class="phase-title">Fase 1 — Liquidação como porta de entrada <span class="tag tag-green">Semanas 1-2</span></div>
+    <ul class="phase-items">
+      <li>Subir 362 peças de liquidação com preço De/Por em 4 páginas por idade</li>
+      <li>Configurar frete grátis acima de R$ 199 + parcelamento 3x sem juros</li>
+      <li>WhatsApp individual para 529 inativos: liquidação + frete grátis</li>
+      <li>WhatsApp para 120 clientes fora do DDD 37: "Agora a Maricota entrega na sua casa"</li>
+      <li>Stories diários: produto + preço De/Por + link direto</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-dot" style="background:var(--purple);">2</div>
+    <div class="phase-title">Fase 2 — Urgência + coleção inverno <span class="tag tag-purple">Semanas 3-4</span></div>
+    <ul class="phase-items">
+      <li>Contagem regressiva nos stories: "Quando acabar, sai do site"</li>
+      <li>Subir coleção inverno 2025+2026 (282 peças) a preço cheio</li>
+      <li>WhatsApp segmentado: quem comprou moletom/jaqueta → "Coleção inverno chegou"</li>
+      <li>Pedir foto da criança com a roupa → repostar como prova social</li>
+      <li>Começar a coletar email e CPF em toda venda física</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-dot" style="background:var(--pink);">3</div>
+    <div class="phase-title">Fase 3 — E-commerce recorrente <span class="tag tag-orange">Mês 2+</span></div>
+    <ul class="phase-items">
+      <li>Catálogo completo: inverno preço cheio + verão com 15-20% off</li>
+      <li>Retargeting via Facebook Pixel (com dados das fases 1 e 2)</li>
+      <li>Google Shopping configurado</li>
+      <li>Investir R$ 5-8k em estoque dedicado ao e-commerce</li>
+      <li>Meta mensal: R$ 3.000-5.000 de faturamento incremental</li>
+    </ul>
+  </div>
+
+  <div class="insight">
+    <strong>Tráfego pago é gasolina. Só faz sentido quando o motor funciona.</strong> Sem conversão validada e sem base de dados, é dinheiro queimado. Primeiro vender com o que tem, depois investir para escalar.
+  </div>
+
+  <!-- Loja vs E-commerce -->
+  <details>
+    <summary>🏪 Estratégias diferentes: Loja Física vs. E-commerce</summary>
+    <div class="detail-content">
+      <div class="compare">
+        <div class="compare-col">
+          <h4>Loja Física</h4>
+          <ul class="phase-items">
+            <li>1-2 peças por modelo (exclusividade)</li>
+            <li>Grade incompleta ok</li>
+            <li>Alta variedade</li>
+            <li>Ticket alto via crediário</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <h4>E-commerce</h4>
+          <ul class="phase-items">
+            <li>3-5 peças por tamanho (grade completa)</li>
+            <li>Precisa todos os tamanhos</li>
+            <li>Menor variedade, mais profundidade</li>
+            <li>Íntimos, conjuntos populares, frete baixo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>Estoque raso funciona na loja física</strong> — a cliente valoriza exclusividade. <strong>No e-commerce, estoque raso gera frustração:</strong> ela encontra o modelo mas não tem o tamanho. E vai embora.
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== METAS ==================== -->
+<div class="section" id="metas">
+  <div class="section-title">
+    <span class="icon" style="background:var(--teal-light);color:var(--teal);">🎯</span>
+    Metas Realistas
+  </div>
+  <div class="section-sub">Metas conservadoras que dependem de execução, não de sorte.</div>
+
+  <div class="compare">
+    <div class="compare-col" style="border-top:3px solid var(--teal);">
+      <h4 style="color:var(--teal);">30 Dias</h4>
+      <ul class="phase-items">
+        <li>80-100 peças de liquidação vendidas</li>
+        <li>8-12 pedidos online</li>
+        <li>R$ 5.000-7.000 em receita de liquidação</li>
+        <li>137+ produtos ativos no site</li>
+        <li>50+ clientes inativos reativados via WhatsApp</li>
+      </ul>
+    </div>
+    <div class="compare-col" style="border-top:3px solid var(--purple);">
+      <h4 style="color:var(--purple);">60 Dias</h4>
+      <ul class="phase-items">
+        <li>236+ produtos no site (catálogo completo)</li>
+        <li>Ticket médio online acima de R$ 120</li>
+        <li>30+ clientes via e-commerce</li>
+        <li>Base com 50+ CPFs para lookalike</li>
+        <li>Conversão de BAG subindo para 15%+</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Se a execução for boa, superamos. Se não, ajustamos.</strong> O importante é medir, não adivinhar.
+  </div>
+
+  <!-- Fechamento -->
+  <div class="card" style="background:linear-gradient(135deg, var(--teal-light), var(--purple-light));border:none;margin-top:24px;">
+    <div class="card-title" style="font-size:18px;text-align:center;">A ponte está pronta para ser construída</div>
+    <div class="compare" style="margin:16px 0;">
+      <div style="text-align:center;">
+        <div class="kpi-label">O que a Maricota tem</div>
+        <p style="font-size:13px;">~R$ 20k/mês na loja · 691 clientes que confiam · Marca forte · BAGs = 35% receita</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="kpi-label">O que precisa resolver</div>
+        <p style="font-size:13px;">R$ 31k parado · 77% inativos · E-commerce travado · BAGs com 88% retorno</p>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:14px;font-weight:500;color:var(--dark);line-height:1.7;max-width:600px;margin:16px auto 0;">
+      O que falta não é um post bonito no Instagram.<br>
+      É <strong>estoque que gira</strong>, <strong>loja online que funciona</strong>,<br>
+      <strong>dados que permitem encontrar a cliente certa</strong>.<br>
+      O conteúdo vem depois. E aí sim, vai funcionar.
+    </p>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-brand">
+    Diagnóstico e plano estratégico por <strong><a href="https://carolcamilobranding.com.br" target="_blank">Carol Camilo Branding</a></strong>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/carolcamilo.branding" target="_blank">Instagram</a>
+    <a href="https://wa.me/5531982256500" target="_blank">WhatsApp</a>
+    <a href="https://carolcamilobranding.com.br" target="_blank">Site</a>
+  </div>
+  <p style="margin-top:12px;font-size:11px;opacity:.5;">Março 2026 · Dados: Phibo, Nuvemshop, Planilhas internas</p>
+</div>
+
+</div><!-- /main -->
+</div><!-- /app-content -->
+
+<script>
+// === PASSWORD ===
+function checkPassword() {
+  const input = document.getElementById('login-password').value;
+  if (input === 'Maricota123') {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('app-content').classList.add('visible');
+    sessionStorage.setItem('auth', '1');
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-password').focus();
+  }
+}
+
+// Keep session alive on refresh
+if (sessionStorage.getItem('auth') === '1') {
+  document.getElementById('login-screen').classList.add('hidden');
+  document.getElementById('app-content').classList.add('visible');
+}
+</script>
+
+<script>
+// === SIDEBAR ===
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+
+// Active nav on scroll
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector(`.sidebar nav a[href="#${id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Close sidebar on nav click (mobile)
+navLinks.forEach(a => a.addEventListener('click', () => {
+  if (window.innerWidth <= 900) toggleSidebar();
+}));
+
+// === CHARTS ===
+const brandColors = ['#2BBDB3','#9B6FB0','#E8719E','#F0994D','#E8C33A','#3DA8D6','#FF8C42','#27AE60','#E74C3C','#8B6FB0'];
+
+Chart.defaults.font.family = "'Fredoka', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.plugins.legend.labels.usePointStyle = true;
+
+// Receita Mensal
+new Chart(document.getElementById('chartReceita'), {
+  type: 'bar',
+  data: {
+    labels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+    datasets: [{
+      label: 'Receita Bruta',
+      data: [21387,23615,23993,28548,32974,26483,33819,19811,27428,22675,27230,41617],
+      backgroundColor: '#2BBDB370',
+      borderColor: '#2BBDB3',
+      borderWidth: 1.5,
+      borderRadius: 4
+    },{
+      label: 'Lucro',
+      data: [-3631,4755,4921,7420,9392,6801,4189,810,5919,2260,4069,13326],
+      backgroundColor: function(ctx) {
+        return ctx.raw < 0 ? '#E74C3C70' : '#9B6FB070';
+      },
+      borderColor: function(ctx) {
+        return ctx.raw < 0 ? '#E74C3C' : '#9B6FB0';
+      },
+      borderWidth: 1.5,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': R$ ' + ctx.raw.toLocaleString('pt-BR')
+        }
+      }
+    },
+    scales: {
+      y: {
+        ticks: {
+          callback: v => 'R$ ' + (v/1000).toFixed(0) + 'k'
+        },
+        grid: { color: '#f0f0f0' }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Captação
+new Chart(document.getElementById('chartCaptacao'), {
+  type: 'bar',
+  data: {
+    labels: ['2023 (mai-dez)','2024','2025','2026 (jan-mar)'],
+    datasets: [{
+      label: 'Novos clientes/mês',
+      data: [41, 16, 7, 15],
+      backgroundColor: ['#2BBDB3','#F0994D','#E74C3C','#9B6FB0'],
+      borderRadius: 6,
+      barThickness: 50
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { callback: v => v + '/mês' },
+        grid: { color: '#f0f0f0' }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Estoque composição
+new Chart(document.getElementById('chartEstoque'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Já venderam','Nunca venderam'],
+    datasets: [{
+      data: [512, 869],
+      backgroundColor: ['#2BBDB3','#E74C3C'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.label + ': ' + ctx.raw + ' unidades'
+        }
+      }
+    }
+  }
+});
+
+// Estoque reclassificado com BAG
+new Chart(document.getElementById('chartEstoqueBAG'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Já venderam (PDV)','Circulou BAG, rejeitado','Nunca saiu da loja'],
+    datasets: [{
+      data: [512, 521, 346],
+      backgroundColor: ['#2BBDB3','#F0994D','#E74C3C'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const vals = ['R$ 13.684','R$ 20.160','R$ 10.753'];
+            return ctx.label + ': ' + ctx.raw + ' un. (' + vals[ctx.dataIndex] + ')';
+          }
+        }
+      }
+    }
+  }
+});
+
+// BAG por tamanho
+new Chart(document.getElementById('chartBAGSize'), {
+  type: 'bar',
+  data: {
+    labels: ['1-3 itens','4-6','7-10','11-15','16-20','21+'],
+    datasets: [{
+      label: 'Conversão',
+      data: [37.0, 27.7, 12.2, 11.9, 9.9, 7.6],
+      backgroundColor: ['#2BBDB3','#27AE60','#F0994D','#F0994D','#E74C3C','#E74C3C'],
+      borderRadius: 6,
+      barThickness: 40
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 45,
+        ticks: { callback: v => v + '%' },
+        grid: { color: '#f0f0f0' }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// BAG por categoria
+new Chart(document.getElementById('chartBAGCategoria'), {
+  type: 'bar',
+  data: {
+    labels: ['Íntimos','Meia','Calça','Body','Legging','Blusa M.E.','Conj. Fof.','Blusa/Cam.','Macacão','Conj. Mol.','Conj. Ver.','Pijama','Short','Vestido','Conj. Prem.','Jaqueta'],
+    datasets: [{
+      label: 'Conversão BAG',
+      data: [21.3,18.2,17.5,17.5,16.7,15.5,15.0,13.7,13.3,12.8,12.1,11.5,9.9,8.6,7.7,7.0],
+      backgroundColor: function(ctx) {
+        const v = ctx.raw;
+        if (v >= 15) return '#2BBDB3';
+        if (v >= 12) return '#F0994D';
+        return '#E74C3C';
+      },
+      borderRadius: 4,
+      barThickness: 16
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.raw + '% de conversão'
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        max: 25,
+        ticks: { callback: v => v + '%' },
+        grid: { color: '#f0f0f0' }
+      },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// Mix de compra
+new Chart(document.getElementById('chartMix'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Conjuntos 35%','Vestidos 15%','Íntimos 12%','Macacão 8%','Blusa/Cam 8%','Pijama 5%','M. Praia 5%','Calça 0-5%','Outros 7%'],
+    datasets: [{
+      data: [35,15,12,8,8,5,5,5,7],
+      backgroundColor: brandColors,
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: { font: { size: 11 }, padding: 8 }
+      }
+    }
+  }
+});
+
+// Gênero
+new Chart(document.getElementById('chartGenero'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Feminino 55%','Masculino 35%','Unissex 10%'],
+    datasets: [{
+      data: [55,35,10],
+      backgroundColor: ['#E8719E','#3DA8D6','#E8C33A'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: { font: { size: 12 }, padding: 12 }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
