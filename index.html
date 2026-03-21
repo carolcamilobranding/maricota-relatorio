@@ -684,8 +684,10 @@ details .detail-content {
     <a href="#giro"><span class="nav-icon">🔄</span> Margem vs. Giro</a>
     <a href="#bags"><span class="nav-icon">👜</span> BAGs</a>
     <a href="#mix"><span class="nav-icon">🎯</span> Mix de Compra</a>
+    <a href="#cadastro"><span class="nav-icon">📋</span> Cadastro Phibo</a>
 
     <div class="sidebar-label">Plano de Ação</div>
+    <a href="#liquidacao"><span class="nav-icon">🏷️</span> Liquidação</a>
     <a href="#plano"><span class="nav-icon">🚀</span> Fases</a>
     <a href="#metas"><span class="nav-icon">🎯</span> Metas</a>
   </nav>
@@ -1315,6 +1317,273 @@ details .detail-content {
       </div>
       <div class="insight">
         <strong>Estoque raso funciona na loja física</strong> — a cliente valoriza exclusividade. <strong>No e-commerce, estoque raso gera frustração:</strong> ela encontra o modelo mas não tem o tamanho. E vai embora.
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== CADASTRO PHIBO ==================== -->
+<div class="section" id="cadastro">
+  <div class="section-title">
+    <span class="icon" style="background:var(--purple-light);color:var(--purple);">📋</span>
+    Qualidade do Cadastro — Phibo
+  </div>
+  <div class="section-sub">O cadastro atual impede análises confiáveis e marketing digital. Padronizar agora evita retrabalho depois.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">COR "PADRÃO"</div>
+      <div class="kpi-value" style="color:var(--pink);">63%</div>
+      <div class="kpi-detail">673 de 1.066 SKUs sem cor real</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">DESCRIÇÕES EM CAIXA ALTA</div>
+      <div class="kpi-value" style="color:var(--orange);">60%</div>
+      <div class="kpi-detail">636 SKUs — inconsistente com o restante</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">SEM CATEGORIA</div>
+      <div class="kpi-value" style="color:var(--orange);">25</div>
+      <div class="kpi-detail">SKUs marcados como "semGrupo"</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">COLEÇÕES COM ERRO</div>
+      <div class="kpi-value" style="color:var(--pink);">4</div>
+      <div class="kpi-detail">Typos: "AVESTURAS", "privameira"...</div>
+    </div>
+  </div>
+
+  <details class="expandable" open>
+    <summary>Problemas encontrados</summary>
+    <div class="expand-content">
+      <div class="card">
+        <div class="card-title">Coleções — sem padrão</div>
+        <table>
+          <thead><tr><th>Como está</th><th>Problema</th><th>Como deveria ser</th></tr></thead>
+          <tbody>
+            <tr><td>AVESTURAS GELADAS 2024</td><td>Typo (Aventuras)</td><td>Aventuras Geladas · Inverno 2024</td></tr>
+            <tr><td>Palco das Cores privameira 25</td><td>Typo + ano abreviado</td><td>Palco das Cores · Primavera 2025</td></tr>
+            <tr><td>inverno2025</td><td>Minúscula, sem espaço</td><td>Inverno 2025</td></tr>
+            <tr><td>Cores que aquecem/inverno2026</td><td>Barra, sem espaço</td><td>Cores que Aquecem · Inverno 2026</td></tr>
+            <tr><td>Verão que vira historia/jan26</td><td>Barra, abreviação</td><td>Verão que Vira História · Verão 2026</td></tr>
+            <tr><td>EXPLOSÃO DE CORES</td><td>Caixa alta, sem ano</td><td>Explosão de Cores · Verão 2024</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="card-title">Cores — 63% sem informação útil</div>
+        <p style="font-size:14px;color:#666;margin:8px 0;">673 produtos têm cor "Padrão" — que na prática significa estampa. Sem cor real preenchida, é impossível filtrar no e-commerce por cor ou fazer análise de preferência.</p>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="card-title">Categorias — 36 nomes diferentes, vários redundantes</div>
+        <p style="font-size:14px;color:#666;margin:8px 0;">Exemplos: "CONJUNTO VERÃO" vs "Conjunto Premium" vs "CONJUNTO FOFURA" vs "Conjunto de Moletom" — são 4 tipos de conjunto sem hierarquia. "LEGGING" e "Calça" poderiam ser uma categoria. "Crooped" tem typo (Cropped).</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="expandable">
+    <summary>Padrão recomendado para novos cadastros</summary>
+    <div class="expand-content">
+      <div class="card">
+        <div class="card-title">Regra de ouro: cada campo tem uma função. Não misturar.</div>
+        <table>
+          <thead><tr><th>Campo</th><th>Regra</th><th>Exemplo ✅</th><th>Evitar ❌</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Descrição</strong></td>
+              <td>Title Case. Tipo + Marca + Detalhe. Sem tamanho, sem cor.</td>
+              <td>Conjunto Moletom Rovitex Feminino</td>
+              <td>CONJ MOLETOM ROV FEM ROSA TAM 4</td>
+            </tr>
+            <tr>
+              <td><strong>Categoria</strong></td>
+              <td>Lista fixa de ~15 categorias. Title Case.</td>
+              <td>Conjunto Moletom</td>
+              <td>semGrupo / CONJUNTO VERÃO</td>
+            </tr>
+            <tr>
+              <td><strong>Coleção</strong></td>
+              <td>Nome Criativo · Estação Ano</td>
+              <td>Cores que Aquecem · Inverno 2026</td>
+              <td>inverno2026 / Cores que aquecem/inverno2026</td>
+            </tr>
+            <tr>
+              <td><strong>Gênero</strong></td>
+              <td>F, M ou U (do produto, não da cliente)</td>
+              <td>F</td>
+              <td>Feminino / menina / FEM</td>
+            </tr>
+            <tr>
+              <td><strong>Cor</strong></td>
+              <td>Cor predominante real. Estampa = "Estampado" + cor de fundo.</td>
+              <td>Rosa / Estampado Azul</td>
+              <td>Padrão</td>
+            </tr>
+            <tr>
+              <td><strong>Tam - Grade</strong></td>
+              <td>Numérico para infantil. RN/P/M/G/GG só para bebê.</td>
+              <td>4, 6, 8</td>
+              <td>Misturar P com 4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="card-title">Lista fixa de categorias sugerida (15)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-size:13px;">
+          <span>1. Conjunto Moletom</span>
+          <span>2. Conjunto Verão</span>
+          <span>3. Conjunto Premium</span>
+          <span>4. Conjunto Fofura</span>
+          <span>5. Vestido</span>
+          <span>6. Camiseta</span>
+          <span>7. Blusa</span>
+          <span>8. Calça / Legging</span>
+          <span>9. Bermuda / Short</span>
+          <span>10. Macacão</span>
+          <span>11. Pijama</span>
+          <span>12. Íntimos (Calcinha/Cueca)</span>
+          <span>13. Moda Praia</span>
+          <span>14. Jaqueta / Colete</span>
+          <span>15. Acessórios (Meia/Laço/Óculos)</span>
+        </div>
+      </div>
+
+      <div class="insight" style="margin-top:16px;">
+        <strong>Por que isso importa:</strong> Com cadastro padronizado, em 5 minutos você gera relatório de giro por categoria, identifica o que está encalhando e decide o que comprar. Com cadastro bagunçado, leva 2 dias de análise manual — e os erros passam despercebidos.
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== LIQUIDAÇÃO ==================== -->
+<div class="section" id="liquidacao">
+  <div class="section-title">
+    <span class="icon" style="background:var(--yellow-light);color:var(--orange);">🏷️</span>
+    Estratégia de Liquidação
+  </div>
+  <div class="section-sub">362 peças para liquidar. Margem validada: todos os descontos dão lucro.</div>
+
+  <div class="compare" style="grid-template-columns:repeat(3,1fr);">
+    <div class="compare-col" style="border-top:3px solid var(--pink);">
+      <h4 style="color:var(--pink);">50-60% off</h4>
+      <ul class="phase-items">
+        <li>143 peças · 2022-2023</li>
+        <li>Custo: R$ 3.456</li>
+        <li>Receita: R$ 4.031-5.039</li>
+        <li>Margem: 14-31%</li>
+        <li>Prazo: 15 dias</li>
+      </ul>
+    </div>
+    <div class="compare-col" style="border-top:3px solid var(--orange);">
+      <h4 style="color:var(--orange);">30-40% off</h4>
+      <ul class="phase-items">
+        <li>140 peças · 2024</li>
+        <li>Custo: R$ 4.071</li>
+        <li>Receita: R$ 6.900-8.050</li>
+        <li>Margem: 41-49%</li>
+        <li>Prazo: 30-60 dias</li>
+      </ul>
+    </div>
+    <div class="compare-col" style="border-top:3px solid var(--yellow);">
+      <h4 style="color:var(--orange);">40-50% off</h4>
+      <ul class="phase-items">
+        <li>79 peças · Moda Praia</li>
+        <li>Fora de estação</li>
+        <li>Prazo: 30 dias</li>
+        <li>Validar com Joyce</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Nenhum desconto dá prejuízo.</strong> A margem original de ~65% absorve até 60% de desconto com lucro. O objetivo não é maximizar margem — é transformar cabide em capital de giro.
+  </div>
+
+  <details class="expandable">
+    <summary>Organização no e-commerce: 4 páginas por idade</summary>
+    <div class="expand-content">
+      <div class="card">
+        <table>
+          <thead><tr><th>Página</th><th>Peças</th><th>Liquidação</th></tr></thead>
+          <tbody>
+            <tr><td>Últimas Peças · Bebê (0-3 anos)</td><td>454</td><td>125</td></tr>
+            <tr><td>Últimas Peças · 4 a 6 anos</td><td>341</td><td>60</td></tr>
+            <tr><td>Últimas Peças · 8 a 10 anos</td><td>257</td><td>53</td></tr>
+            <tr><td>Últimas Peças · Juvenil (12+)</td><td>252</td><td>39</td></tr>
+          </tbody>
+        </table>
+        <div class="insight" style="margin-top:12px;">
+          <strong>Por que por idade?</strong> A mãe pesquisa por idade, não por desconto. "Peças para minha filha de 5 anos a partir de R$15" é mais forte que "Cupom DESAPEGA50".
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="expandable">
+    <summary>Regras de catálogo e cupons</summary>
+    <div class="expand-content">
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--teal);">
+          <h4>Catálogo Regular</h4>
+          <ul class="phase-items">
+            <li>Só produtos com 2+ unidades</li>
+            <li>Vende 1, fica "esgotado" → frustra a próxima</li>
+            <li>Frete grátis acima de R$199</li>
+          </ul>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--pink);">
+          <h4>Liquidação</h4>
+          <ul class="phase-items">
+            <li>Subir TUDO, inclusive peça única</li>
+            <li>132 produtos têm 1 peça = ~R$6.350 em receita</li>
+            <li>Desconto no preço De/Por (riscado)</li>
+            <li>Frete calculado por CEP (sem grátis)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare" style="margin-top:16px;">
+        <div class="compare-col" style="border-top:3px solid var(--pink);">
+          <h4 style="color:var(--pink);">BEMVINDA</h4>
+          <p style="font-size:14px;"><strong>10% off na primeira compra</strong></p>
+          <ul class="phase-items">
+            <li>Todo o site (inclusive liquidação)</li>
+            <li>Permanente</li>
+            <li>Divulgar: bio, WhatsApp, stories</li>
+          </ul>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--teal);">
+          <h4 style="color:var(--teal);">FRETEGRATIS</h4>
+          <p style="font-size:14px;"><strong>Frete grátis acima de R$199</strong></p>
+          <ul class="phase-items">
+            <li>Só catálogo regular (preço cheio)</li>
+            <li>Permanente</li>
+            <li>Incentiva ticket igual ao crediário (R$215)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight" style="margin-top:12px;">
+        O desconto vai direto no campo De/Por do produto (preço riscado). Sem cupom para liquidação, mais simples, mais forte visualmente.
+      </div>
+    </div>
+  </details>
+
+  <details class="expandable">
+    <summary>Escalada de urgência</summary>
+    <div class="expand-content">
+      <div class="card">
+        <table>
+          <thead><tr><th>Semana</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td>1-2</td><td>Desconto inicial (50% para 2022-23, 30% para 2024)</td></tr>
+            <tr><td>3</td><td>Se não vendeu: +10% desconto (60% e 40%)</td></tr>
+            <tr><td>4</td><td>Stories "Últimas unidades — quando acabar, sai do site"</td></tr>
+            <tr><td>5+</td><td>Kit "Leve 3, Pague 2" com peças restantes</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </details>
