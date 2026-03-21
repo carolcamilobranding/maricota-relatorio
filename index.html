@@ -1112,65 +1112,138 @@ details .detail-content {
 
   <!-- Conversão por categoria -->
   <div class="card">
-    <div class="card-title">Conversão por categoria em BAG</div>
+    <div class="card-title">Conversão por categoria em BAG (16.115 itens analisados)</div>
     <div class="chart-container" style="max-width:100%;height:340px;">
       <canvas id="chartBAGCategoria"></canvas>
     </div>
   </div>
 
   <div class="insight">
-    <strong>Íntimos convertem 21,3% em BAG — quase o dobro da média.</strong> Vestidos convertem só 8,6% (a cliente precisa experimentar pessoalmente). Jaquetas: 7% — vender na loja, não em BAG.
+    <strong>Íntimos convertem 19,5% em BAG — quase o dobro da média.</strong> Vestidos convertem só 8,3% (a cliente precisa experimentar pessoalmente). Jaquetas: 8,6% — vender na loja, não em BAG.
   </div>
 
-  <!-- Clientes BAG -->
-  <details>
-    <summary>👥 Quem compra vs. quem só passeia</summary>
-    <div class="detail-content">
+  <!-- Estoque parado + BAG -->
+  <details class="expandable" open>
+    <summary>O que o BAG revela sobre o estoque parado</summary>
+    <div class="expand-content">
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--pink);">
+          <h4 style="color:var(--pink);">521 peças — Rejeitadas</h4>
+          <p style="font-size:14px;">Nunca venderam no PDV <strong>E já circularam em BAG</strong>. A cliente viu, pegou na mão e devolveu.</p>
+          <p style="font-size:13px;color:#888;">R$ 57.691 em valor de venda</p>
+          <p style="font-size:14px;font-weight:600;color:var(--pink);">→ Destino: liquidação no e-commerce. Não mandar em BAG de novo.</p>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--yellow);">
+          <h4 style="color:var(--orange);">346 peças — Nunca vistas</h4>
+          <p style="font-size:14px;">Nunca venderam no PDV <strong>E nunca foram em BAG</strong>. Ninguém viu ainda.</p>
+          <p style="font-size:13px;color:#888;">R$ 30.789 em valor de venda</p>
+          <p style="font-size:14px;font-weight:600;color:var(--orange);">→ Testar em BAG para clientes VIP (conv > 30%) antes de liquidar.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>60% do estoque parado já foi rejeitado pela cliente.</strong> Não é "estoque que não vendeu ainda" — é estoque que as clientes viram e disseram não. Continuar mandando em BAG é insistir no erro.
+      </div>
+    </div>
+  </details>
+
+  <!-- Produtos BAG -->
+  <details class="expandable">
+    <summary>Top produtos em BAG: o que vende vs. o que sempre volta</summary>
+    <div class="expand-content">
       <div class="compare">
         <div class="compare-col" style="border-top:3px solid var(--teal);">
-          <h4 style="color:var(--teal);">Melhores clientes BAG</h4>
+          <h4 style="color:var(--teal);">Mais vendidos em BAG</h4>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Cliente</th><th>BAGs</th><th>Conv.</th></tr></thead>
+              <thead><tr><th>Produto</th><th>Conv.</th></tr></thead>
               <tbody>
-                <tr><td>Tayline Rodrigues</td><td class="num">8</td><td class="num teal bold">84%</td></tr>
-                <tr><td>Sara Guimarães</td><td class="num">5</td><td class="num teal bold">81%</td></tr>
-                <tr><td>Lorena Gasparina</td><td class="num">7</td><td class="num teal bold">60%</td></tr>
+                <tr><td>Kit 5 Calcinhas Cotton</td><td class="num teal bold">23,2%</td></tr>
+                <tr><td>Blusa Meia Estação Unissex</td><td class="num teal bold">23,5%</td></tr>
+                <tr><td>Kit 3 Boxer Carrinho</td><td class="num teal bold">22,5%</td></tr>
+                <tr><td>Conjunto Verão</td><td class="num teal bold">21,3%</td></tr>
+                <tr><td>Meia Marvel</td><td class="num teal bold">20,7%</td></tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="compare-col" style="border-top:3px solid var(--danger);">
-          <h4 style="color:var(--danger);">Piores clientes BAG</h4>
+          <h4 style="color:var(--danger);">100% rejeitados (nunca venderam)</h4>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Cliente</th><th>BAGs</th><th>Conv.</th></tr></thead>
+              <thead><tr><th>Produto</th><th>Devol.</th></tr></thead>
               <tbody>
-                <tr><td>Joice Rocha</td><td class="num">10</td><td class="num danger bold">1%</td></tr>
-                <tr><td>Natalie Salao</td><td class="num">19</td><td class="num danger bold">4%</td></tr>
-                <tr><td>Walina Barbara</td><td class="num">5</td><td class="num danger bold">0%</td></tr>
+                <tr><td>Fakini CJ Masc 4x10</td><td class="num danger bold">56</td></tr>
+                <tr><td>Vestido Dingdang Flor</td><td class="num danger bold">29</td></tr>
+                <tr><td>Conj Calça Lecimar Menina</td><td class="num danger bold">28</td></tr>
+                <tr><td>Conj Blusão Capuz Trick Nick</td><td class="num danger bold">26</td></tr>
+                <tr><td>Conj Masc Infantil 72120</td><td class="num danger bold">24</td></tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
       <div class="insight">
-        <strong>Tayline compra 84% do que recebe. Walina devolveu tudo 5 vezes.</strong> Tratar as duas igual é desperdiçar as duas.
+        Kit Calcinha e Kit Boxer lideram conversão. <strong>Incluir íntimos em toda BAG como "isca".</strong> Produtos 100% rejeitados devem ir direto para liquidação — não insistir em BAG.
       </div>
     </div>
   </details>
 
-  <!-- 4 regras -->
+  <!-- Clientes BAG -->
+  <details class="expandable">
+    <summary>Quem compra vs. quem só passeia</summary>
+    <div class="expand-content">
+      <div class="compare">
+        <div class="compare-col" style="border-top:3px solid var(--teal);">
+          <h4 style="color:var(--teal);">Melhores clientes BAG</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Cliente</th><th>Itens</th><th>Conv.</th><th>R$</th></tr></thead>
+              <tbody>
+                <tr><td>Tayline Rodrigues</td><td class="num">24</td><td class="num teal bold">79%</td><td class="num">1.704</td></tr>
+                <tr><td>Sara Guimarães</td><td class="num">28</td><td class="num teal bold">75%</td><td class="num">2.318</td></tr>
+                <tr><td>Karoline R. Nunes</td><td class="num">39</td><td class="num teal bold">56%</td><td class="num">2.362</td></tr>
+                <tr><td>Mara Cristina</td><td class="num">33</td><td class="num teal bold">55%</td><td class="num">1.600</td></tr>
+                <tr><td>Ana Paula Alves</td><td class="num">53</td><td class="num teal bold">45%</td><td class="num">1.464</td></tr>
+                <tr><td>Stefany Elina Silva</td><td class="num">100</td><td class="num teal bold">35%</td><td class="num">3.155</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="compare-col" style="border-top:3px solid var(--danger);">
+          <h4 style="color:var(--danger);">0% conversão (devolveram tudo)</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Cliente</th><th>Itens</th><th>Conv.</th></tr></thead>
+              <tbody>
+                <tr><td>Richard Souza</td><td class="num">44</td><td class="num danger bold">0%</td></tr>
+                <tr><td>Camila Zanet</td><td class="num">41</td><td class="num danger bold">0%</td></tr>
+                <tr><td>Cristina G. F. Silva</td><td class="num">38</td><td class="num danger bold">0%</td></tr>
+                <tr><td>Walina Barbara</td><td class="num">34</td><td class="num danger bold">0%</td></tr>
+                <tr><td>Kamila Cruz</td><td class="num">29</td><td class="num danger bold">0%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:12px;color:var(--danger);margin-top:8px;">186 itens enviados para 5 clientes. Zero vendido.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <strong>Tayline compra 79% do que recebe. Richard devolveu 44 itens sem comprar nada.</strong> Tratar os dois igual é desperdiçar os dois.
+      </div>
+    </div>
+  </details>
+
+  <!-- 5 regras -->
   <div class="card">
-    <div class="card-title">4 regras para BAGs com mais resultado</div>
+    <div class="card-title">5 regras para BAGs com mais resultado</div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>#</th><th>Regra</th><th>Por quê</th></tr></thead>
         <tbody>
           <tr><td class="bold">1</td><td>Máximo 8 itens por BAG</td><td>BAGs acima de 10 itens convertem menos de 12%</td></tr>
-          <tr><td class="bold">2</td><td>Priorizar Íntimos e Meias em toda BAG</td><td>21% de conversão — funcionam como "porta de entrada"</td></tr>
-          <tr><td class="bold">3</td><td>Teto de 2 BAGs devolvidas 100%</td><td>Parar de enviar até a cliente vir à loja</td></tr>
-          <tr><td class="bold">4</td><td>BAGs maiores para quem converte 30%+</td><td>Tayline (84%) merece mais opções</td></tr>
+          <tr><td class="bold">2</td><td>Incluir Íntimos e Meias em toda BAG</td><td>19,5% de conversão — funcionam como "isca" garantida</td></tr>
+          <tr><td class="bold">3</td><td>Teto de 2 BAGs devolvidas 100%</td><td>Suspender até a cliente vir à loja</td></tr>
+          <tr><td class="bold">4</td><td>BAGs maiores para quem converte 30%+</td><td>Tayline (79%) e Stefany (35%) merecem mais opções</td></tr>
+          <tr><td class="bold">5</td><td>Lista negra de produtos rejeitados</td><td>10 produtos com 0% conversão em 250+ envios — não insistir</td></tr>
         </tbody>
       </table>
     </div>
@@ -1883,10 +1956,10 @@ new Chart(document.getElementById('chartBAGSize'), {
 new Chart(document.getElementById('chartBAGCategoria'), {
   type: 'bar',
   data: {
-    labels: ['Íntimos','Meia','Calça','Body','Legging','Blusa M.E.','Conj. Fof.','Blusa/Cam.','Macacão','Conj. Mol.','Conj. Ver.','Pijama','Short','Vestido','Conj. Prem.','Jaqueta'],
+    labels: ['Íntimos','Meia','Body','Moda Praia','Calça','Camiseta','Conj. Fof.','Conj. Mol.','Macacão','Legging','Blusa','Conj. Ver.','Pijama','Berm/Short','Conj. Prem.','Jaqueta','Vestido'],
     datasets: [{
       label: 'Conversão BAG',
-      data: [21.3,18.2,17.5,17.5,16.7,15.5,15.0,13.7,13.3,12.8,12.1,11.5,9.9,8.6,7.7,7.0],
+      data: [19.5,17.4,16.7,15.5,15.2,13.6,13.6,13.1,13.0,12.7,12.3,11.1,10.9,10.3,10.3,8.6,8.3],
       backgroundColor: function(ctx) {
         const v = ctx.raw;
         if (v >= 15) return '#32e1c5';
