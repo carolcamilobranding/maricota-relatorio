@@ -62,12 +62,12 @@
   margin-bottom: 12px;
 }
 
-.login-box input:focus { border-color: #2BBDB3; }
+.login-box input:focus { border-color: #32e1c5; }
 
 .login-box button {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, #2BBDB3, #1E9A91);
+  background: linear-gradient(135deg, #32e1c5, #28b89e);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -92,17 +92,17 @@
 </style>
 <style>
 :root {
-  --teal: #2BBDB3;
-  --teal-light: #E8F8F7;
-  --teal-dark: #1E9A91;
-  --purple: #9B6FB0;
-  --purple-light: #F3EDF6;
-  --pink: #E8719E;
-  --pink-light: #FDF0F4;
-  --orange: #F0994D;
-  --orange-light: #FEF3E8;
-  --yellow: #E8C33A;
-  --blue: #3DA8D6;
+  --teal: #32e1c5;
+  --teal-light: #abefe2;
+  --teal-dark: #28b89e;
+  --purple: #bf5cf8;
+  --purple-light: #e5c0ff;
+  --pink: #ff6fd9;
+  --pink-light: #ffc0f2;
+  --orange: #ff884d;
+  --orange-light: #ffb899;
+  --yellow: #ffda42;
+  --blue: #00bbf7;
   --dark: #2D3436;
   --gray-900: #333;
   --gray-700: #555;
@@ -1430,7 +1430,7 @@ navLinks.forEach(a => a.addEventListener('click', () => {
 }));
 
 // === CHARTS ===
-const brandColors = ['#2BBDB3','#9B6FB0','#E8719E','#F0994D','#E8C33A','#3DA8D6','#FF8C42','#27AE60','#E74C3C','#8B6FB0'];
+const brandColors = ['#32e1c5','#bf5cf8','#ff6fd9','#ff884d','#ffda42','#00bbf7','#FF8C42','#27AE60','#E74C3C','#bf5cf8'];
 
 Chart.defaults.font.family = "'Fredoka', sans-serif";
 Chart.defaults.font.size = 12;
@@ -1444,18 +1444,18 @@ new Chart(document.getElementById('chartReceita'), {
     datasets: [{
       label: 'Receita Bruta',
       data: [21387,23615,23993,28548,32974,26483,33819,19811,27428,22675,27230,41617],
-      backgroundColor: '#2BBDB370',
-      borderColor: '#2BBDB3',
+      backgroundColor: '#32e1c570',
+      borderColor: '#32e1c5',
       borderWidth: 1.5,
       borderRadius: 4
     },{
       label: 'Lucro',
       data: [-3631,4755,4921,7420,9392,6801,4189,810,5919,2260,4069,13326],
       backgroundColor: function(ctx) {
-        return ctx.raw < 0 ? '#E74C3C70' : '#9B6FB070';
+        return ctx.raw < 0 ? '#E74C3C70' : '#bf5cf870';
       },
       borderColor: function(ctx) {
-        return ctx.raw < 0 ? '#E74C3C' : '#9B6FB0';
+        return ctx.raw < 0 ? '#E74C3C' : '#bf5cf8';
       },
       borderWidth: 1.5,
       borderRadius: 4
@@ -1491,7 +1491,7 @@ new Chart(document.getElementById('chartCaptacao'), {
     datasets: [{
       label: 'Novos clientes/mês',
       data: [41, 16, 7, 15],
-      backgroundColor: ['#2BBDB3','#F0994D','#E74C3C','#9B6FB0'],
+      backgroundColor: ['#32e1c5','#ff884d','#E74C3C','#bf5cf8'],
       borderRadius: 6,
       barThickness: 50
     }]
@@ -1518,7 +1518,7 @@ new Chart(document.getElementById('chartEstoque'), {
     labels: ['Já venderam','Nunca venderam'],
     datasets: [{
       data: [512, 869],
-      backgroundColor: ['#2BBDB3','#E74C3C'],
+      backgroundColor: ['#32e1c5','#E74C3C'],
       borderWidth: 2,
       borderColor: '#fff'
     }]
@@ -1543,7 +1543,7 @@ new Chart(document.getElementById('chartEstoqueBAG'), {
     labels: ['Já venderam (PDV)','Circulou BAG, rejeitado','Nunca saiu da loja'],
     datasets: [{
       data: [512, 521, 346],
-      backgroundColor: ['#2BBDB3','#F0994D','#E74C3C'],
+      backgroundColor: ['#32e1c5','#ff884d','#E74C3C'],
       borderWidth: 2,
       borderColor: '#fff'
     }]
@@ -1572,7 +1572,7 @@ new Chart(document.getElementById('chartBAGSize'), {
     datasets: [{
       label: 'Conversão',
       data: [37.0, 27.7, 12.2, 11.9, 9.9, 7.6],
-      backgroundColor: ['#2BBDB3','#27AE60','#F0994D','#F0994D','#E74C3C','#E74C3C'],
+      backgroundColor: ['#32e1c5','#27AE60','#ff884d','#ff884d','#E74C3C','#E74C3C'],
       borderRadius: 6,
       barThickness: 40
     }]
@@ -1603,8 +1603,8 @@ new Chart(document.getElementById('chartBAGCategoria'), {
       data: [21.3,18.2,17.5,17.5,16.7,15.5,15.0,13.7,13.3,12.8,12.1,11.5,9.9,8.6,7.7,7.0],
       backgroundColor: function(ctx) {
         const v = ctx.raw;
-        if (v >= 15) return '#2BBDB3';
-        if (v >= 12) return '#F0994D';
+        if (v >= 15) return '#32e1c5';
+        if (v >= 12) return '#ff884d';
         return '#E74C3C';
       },
       borderRadius: 4,
@@ -1666,7 +1666,7 @@ new Chart(document.getElementById('chartGenero'), {
     labels: ['Feminino 55%','Masculino 35%','Unissex 10%'],
     datasets: [{
       data: [55,35,10],
-      backgroundColor: ['#E8719E','#3DA8D6','#E8C33A'],
+      backgroundColor: ['#ff6fd9','#00bbf7','#ffda42'],
       borderWidth: 2,
       borderColor: '#fff'
     }]
