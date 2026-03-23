@@ -690,6 +690,7 @@ details .detail-content {
     <a href="#liquidacao"><span class="nav-icon">🏷️</span> Liquidação</a>
     <a href="#plano"><span class="nav-icon">🚀</span> Fases</a>
     <a href="#metas"><span class="nav-icon">🎯</span> Metas</a>
+    <a href="#controle"><span class="nav-icon">⚠️</span> Controle</a>
   </nav>
 
   <div class="sidebar-footer" style="text-align:left;">
@@ -1992,6 +1993,109 @@ details .detail-content {
       O conteúdo vem depois. E aí sim, vai funcionar.
     </p>
   </div>
+</div>
+
+<!-- Controle Operacional -->
+<div class="section" id="controle">
+  <div class="section-title">
+    <span class="icon" style="background:#fff3cd;color:#856404;">⚠️</span>
+    Controle Operacional — O que a contagem revelou
+  </div>
+  <div class="section-sub">A contagem física de 21/03 encontrou 42% de divergência entre o sistema e a realidade.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Estoque no Phibo (antes)</div>
+      <div class="kpi-value">1.379</div>
+      <div class="kpi-note">peças registradas</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Estoque real (contagem)</div>
+      <div class="kpi-value teal">793</div>
+      <div class="kpi-note">peças na loja</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="kpi-label">Diferença</div>
+      <div class="kpi-value danger">586</div>
+      <div class="kpi-note">peças fantasma (42%)</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-label">SKUs removidos</div>
+      <div class="kpi-value orange">470</div>
+      <div class="kpi-note">não existiam mais na loja</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">O que aconteceu com as 586 peças fantasma?</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Situação</th><th>SKUs</th><th>Explicação</th></tr></thead>
+        <tbody>
+          <tr><td>Venderam no PDV mas não deu baixa</td><td class="num bold">200</td><td>Venda registrada no relatório, estoque não atualizado</td></tr>
+          <tr><td>Circularam em BAG e sumiram</td><td class="num bold">136</td><td>Saíram em BAG, não foram devolvidas ao sistema</td></tr>
+          <tr><td>Nunca apareceram em nenhum relatório</td><td class="num bold">130</td><td>Venda informal, perda, erro de cadastro</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Quando os erros de baixa aconteceram?</div>
+    <p style="font-size:13px;color:#666;margin-bottom:12px;">Última venda registrada dos 200 SKUs que venderam mas não deram baixa:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Período</th><th>SKUs sem baixa</th><th>%</th><th>Diagnóstico</th></tr></thead>
+        <tbody>
+          <tr><td>2024 (todo o ano)</td><td class="num bold">60</td><td class="num">30%</td><td>Erros acumulados há 1+ ano</td></tr>
+          <tr><td>Jan–Jun 2025</td><td class="num bold">66</td><td class="num">33%</td><td>Ritmo constante</td></tr>
+          <tr><td>Jul–Dez 2025</td><td class="num bold">56</td><td class="num">28%</td><td>Inclui pico de Dezembro (16 SKUs)</td></tr>
+          <tr><td>Jan–Mar 2026</td><td class="num bold">18</td><td class="num">9%</td><td>Continua acontecendo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Não é um evento pontual — é um problema crônico.</strong> A cada mês, ~8-10 SKUs são vendidos sem baixa no estoque. Dezembro é o pior mês (maior volume). O processo de venda não está conectado ao processo de baixa no Phibo.
+  </div>
+
+  <div class="card">
+    <div class="card-title">DRE × Relatório de Vendas</div>
+    <div class="compare">
+      <div class="compare-col" style="border-top:3px solid var(--teal);">
+        <h4 style="color:var(--teal);">DRE 2025</h4>
+        <p style="font-size:24px;font-weight:700;color:var(--teal);">R$ 329.579</p>
+        <p style="font-size:13px;color:#666;">Receita bruta registrada na contabilidade</p>
+      </div>
+      <div class="compare-col" style="border-top:3px solid var(--teal);">
+        <h4 style="color:var(--teal);">Relatório de Vendas PDV</h4>
+        <p style="font-size:24px;font-weight:700;color:var(--teal);">R$ 329.579</p>
+        <p style="font-size:13px;color:#666;">Soma de todas as vendas por produto 2025</p>
+      </div>
+    </div>
+    <div class="insight">
+      <strong>DRE e vendas batem 100%.</strong> A receita foi registrada corretamente — o erro foi só no estoque (não deu baixa das peças vendidas). Isso também confirma que <strong>receita de BAG não entra no relatório de vendas por produto</strong> — entra por outra via no caixa.
+    </div>
+  </div>
+
+  <details class="expandable">
+    <summary>5 ações para corrigir o controle de estoque</summary>
+    <div class="expand-content">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Ação</th><th>Quando</th></tr></thead>
+          <tbody>
+            <tr><td class="bold">1</td><td><strong>Contagem rotativa mensal</strong> — bipar 20% do estoque por semana (1 prateleira/dia). Em 1 mês, cobriu tudo.</td><td>Imediato</td></tr>
+            <tr><td class="bold">2</td><td><strong>Validar baixa a cada venda</strong> — ao fechar venda no PDV, conferir se o Phibo atualizou. Se não, dar baixa manual na hora.</td><td>Imediato</td></tr>
+            <tr><td class="bold">3</td><td><strong>Controle de devolução de BAG</strong> — ao receber BAG devolvida, bipar cada peça e confirmar reentrada no Phibo.</td><td>Imediato</td></tr>
+            <tr><td class="bold">4</td><td><strong>Contagem completa trimestral</strong> — zerar e bipar tudo a cada 3 meses (próxima: junho 2026)</td><td>Trimestral</td></tr>
+            <tr><td class="bold">5</td><td><strong>Relatório de divergência</strong> — comparar vendas PDV × baixas no Phibo semanalmente. Se divergir, corrigir na semana, não em 2 anos.</td><td>Semanal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
 </div>
 
 </div><!-- /content -->
