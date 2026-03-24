@@ -1462,21 +1462,67 @@ details .detail-content {
   </div>
 
   <details>
-    <summary>🏷️ Marcas prioritárias</summary>
+    <summary>🏷️ Marcas — classificação por Margem × Giro × BAG</summary>
     <div class="detail-content">
+      <p style="font-size:13px;color:var(--gray-500);margin-bottom:12px;">A análise anterior olhava só margem. Agora cruza margem + velocidade de venda (giro) + conversão em BAG. <strong>Margem alta com giro lento gera menos lucro que margem média com giro rápido.</strong></p>
+
+      <p style="font-size:14px;font-weight:600;color:var(--teal);margin:16px 0 8px;">🟢 Aumentar</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Marca</th><th>Margem</th><th>Estoque</th><th>Prioridade</th></tr></thead>
+          <thead><tr><th>Marca</th><th>Margem</th><th>Giro</th><th>BAG</th><th>Estoque</th><th>Por quê</th></tr></thead>
           <tbody>
-            <tr><td>Pingo Lele</td><td class="num teal bold">71,4%</td><td class="num">27</td><td><span class="tag tag-green">Alta</span></td></tr>
-            <tr><td>Rovitex</td><td class="num">65,3%</td><td class="num">156</td><td><span class="tag tag-green">Core</span></td></tr>
-            <tr><td>Elian</td><td class="num">66,6%</td><td class="num">110</td><td><span class="tag tag-green">Core</span></td></tr>
-            <tr><td>Boca Grande</td><td class="num teal">69,4%</td><td class="num">23</td><td><span class="tag tag-green">Alta</span></td></tr>
-            <tr><td>José Leite</td><td class="num">68,0%</td><td class="num">24</td><td><span class="tag tag-green">Boa</span></td></tr>
-            <tr><td>Colorir</td><td class="num danger">52,6%</td><td class="num">24</td><td><span class="tag tag-red">Reduzir</span></td></tr>
-            <tr><td>Marlon</td><td class="num danger">57,2%</td><td class="num">26</td><td><span class="tag tag-red">Reduzir</span></td></tr>
+            <tr><td>Viston Basic</td><td class="num teal bold">65,2%</td><td class="num teal bold">4,8m</td><td class="num teal bold">22,1%</td><td class="num">16</td><td>Giro rápido + melhor BAG. Body e conjuntos.</td></tr>
+            <tr><td>Boca Grande</td><td class="num teal bold">69,5%</td><td class="num teal bold">6,0m</td><td class="num">20,0%</td><td class="num">9</td><td>Margem alta + giro saudável.</td></tr>
+            <tr><td>Byla e Boby</td><td class="num">66,0%</td><td class="num teal bold">1,4m</td><td class="num">11,9%</td><td class="num">3</td><td>Giro mais rápido do portfólio. Calças.</td></tr>
+            <tr><td>Colorir</td><td class="num orange">51,1%</td><td class="num teal bold">*</td><td class="num">6,5%</td><td class="num">12</td><td>Fornece íntimos (calcinha/cueca) — categoria com giro 1,0m e 19,5% BAG. Margem menor compensa com volume.</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <p style="font-size:14px;font-weight:600;color:var(--orange);margin:16px 0 8px;">🟡 Manter</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Margem</th><th>Giro</th><th>BAG</th><th>Estoque</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td>Kamylus</td><td class="num">61,8%</td><td class="num orange">32m</td><td class="num teal bold">25,9%</td><td class="num">16</td><td>BAG excelente, giro fraco. Manter volume atual.</td></tr>
+            <tr><td>DPK</td><td class="num">65,5%</td><td class="num orange">13,2m</td><td class="num">11,1%</td><td class="num">11</td><td>Nicho Conj. Fofura. BAG ok.</td></tr>
+            <tr><td>Pingo Lele</td><td class="num teal bold">72,9%</td><td class="num danger">20,3m</td><td class="num">10,0%</td><td class="num">27</td><td>Maior margem do portfólio, mas giro lento. Manter pouco.</td></tr>
+            <tr><td>Mimbes</td><td class="num">63,3%</td><td class="num orange">12,5m</td><td class="num">11,5%</td><td class="num">102</td><td>Reduzir Legging (encalhada), manter Blusa ME.</td></tr>
+            <tr><td>Samir Bamban</td><td class="num">66,2%</td><td class="num danger">21,6m</td><td class="num">4,3%</td><td class="num">18</td><td>Bom histórico, desacelerou. Reduzir volume.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:14px;font-weight:600;color:var(--danger);margin:16px 0 8px;">🔴 Reduzir</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Margem</th><th>Giro</th><th>BAG</th><th>Estoque</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td>Rovitex</td><td class="num">65,9%</td><td class="num danger">34,7m</td><td class="num danger">2,9%</td><td class="num">173</td><td>Maior estoque, giro péssimo, BAG quase zero.</td></tr>
+            <tr><td>Elian</td><td class="num">65,9%</td><td class="num danger">82,5m</td><td class="num danger">0,3%</td><td class="num">110</td><td>82 meses de estoque. BAG praticamente zero.</td></tr>
+            <tr><td>Trick Nick</td><td class="num">65,2%</td><td class="num danger">27,6m</td><td class="num danger">1,6%</td><td class="num">23</td><td>Giro e BAG fracos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:14px;font-weight:600;color:#333;margin:16px 0 8px;">⛔ Parar de comprar (até girar estoque)</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Margem</th><th>Giro</th><th>BAG</th><th>Estoque</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td>Pokotinha</td><td class="num">64,9%</td><td class="num danger">240m</td><td class="num danger">0%</td><td class="num">40</td><td>1 peça vendida em todo o histórico. 0 BAG.</td></tr>
+            <tr><td>On Kids</td><td class="num">66,3%</td><td class="num danger">72m</td><td class="num danger">0%</td><td class="num">24</td><td>2 vendas, 0 BAG. Conj. Meia Estação parado.</td></tr>
+            <tr><td>Marlon</td><td class="num orange">62,3%</td><td class="num danger">69m</td><td class="num danger">0%</td><td class="num">23</td><td>4 vendas históricas, 0 BAG.</td></tr>
+            <tr><td>Perfect Boys</td><td class="num orange">61,7%</td><td class="num danger">∞</td><td class="num danger">0%</td><td class="num">23</td><td>Zero vendas. Zero BAG. 23 peças paradas.</td></tr>
+            <tr><td>Time Kids</td><td class="num orange">59,7%</td><td class="num danger">84m</td><td class="num danger">0%</td><td class="num">14</td><td>1 venda, 0 BAG. Conj. Premium encalhado.</td></tr>
+            <tr><td>Tom Quest</td><td class="num orange">52,0%</td><td class="num danger">∞</td><td class="num danger">0%</td><td class="num">4</td><td>Margem baixa + zero giro.</td></tr>
+            <tr><td>Mon Sucre</td><td class="num orange">58,2%</td><td class="num danger">∞</td><td class="num danger">0%</td><td class="num">7</td><td>48 itens em BAG, zero vendidos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="insight" style="margin-top:16px;">
+        <strong>A lição:</strong> Rovitex e Elian tinham margem boa (65-66%) e pareciam "Core" — mas acumulam 283 peças com giro de 35 a 82 meses e conversão BAG abaixo de 3%. Enquanto isso, Colorir com 51% de margem fornece o produto que mais gira (íntimos: 1 mês) e mais converte em BAG (19,5%). <strong>Giro vence margem.</strong>
       </div>
     </div>
   </details>
