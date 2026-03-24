@@ -2217,20 +2217,13 @@ details .detail-content {
     </div>
   </div>
 
-  <!-- Aquisição por canal -->
-  <div class="card">
-    <div class="card-title">Como as clientes conheceram a Maricota</div>
-    <div class="chart-container" style="max-width:100%;height:220px;">
-      <canvas id="chartAquisicao"></canvas>
-    </div>
-    <p style="font-size:13px;color:#666;margin-top:12px;">15% das clientes vieram pelo Instagram — 3º canal de aquisição. Com 691 clientes na base, são ~104 clientes adquiridas via Instagram ao longo do tempo.</p>
-  </div>
+  <!-- Aquisição por canal - removido: dados preenchidos pelas vendedoras sem critério, não confiável -->
 
   <div class="card" style="background:#fff3f3;border-left:4px solid var(--danger);">
     <div class="card-title" style="color:var(--danger);">O que os dados NÃO mostram</div>
     <p style="font-size:14px;line-height:1.7;">O Meta mostra cliques, alcance e conversas — <strong>não mostra vendas</strong>. A Maricota vende por crediário presencial e WhatsApp, canais invisíveis para o Meta.</p>
     <p style="font-size:14px;line-height:1.7;margin-top:8px;">A proprietária confirma: <strong>nenhuma venda foi percebida como vinda dos anúncios.</strong> Isso não significa que zero pessoas compraram depois de ver um anúncio — significa que não existe rastreio. Sem perguntar "como você conheceu a loja?" a cada venda, é impossível medir o retorno real.</p>
-    <p style="font-size:14px;line-height:1.7;margin-top:8px;">495 conversas no WhatsApp foram geradas pelos ads. Alguma percentagem virou venda — mas não sabemos qual. O único dado concreto: <strong>15% das clientes dizem que conheceram a loja pelo Instagram</strong> (orgânico + pago, sem distinção).</p>
+    <p style="font-size:14px;line-height:1.7;margin-top:8px;">495 conversas no WhatsApp foram geradas pelos ads. Alguma percentagem pode ter virado venda — mas não sabemos qual. Não existe rastreio de origem de cliente no Phibo.</p>
     <p style="font-size:14px;line-height:1.7;margin-top:8px;font-weight:600;">Conclusão: antes de investir mais em ads, é preciso (1) ter o e-commerce funcionando para rastrear vendas online e (2) implementar a pergunta "como conheceu a loja?" no Phibo para rastrear vendas offline.</p>
   </div>
 
@@ -2612,32 +2605,6 @@ new Chart(document.getElementById('chartBAGCategoria'), {
         ticks: { callback: v => v + '%' },
         grid: { color: '#f0f0f0' }
       },
-      y: { grid: { display: false } }
-    }
-  }
-});
-
-// Aquisição por canal
-new Chart(document.getElementById('chartAquisicao'), {
-  type: 'bar',
-  data: {
-    labels: ['Já era cliente','Viu na rua','Indicação','Instagram','Outros'],
-    datasets: [{
-      data: [43.99, 21.98, 18.11, 15.12, 0.81],
-      backgroundColor: ['#abefe2', brandColors[1], brandColors[2], brandColors[0], '#ddd'],
-      borderRadius: 6,
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ctx.raw + '%' } }
-    },
-    scales: {
-      x: { grid: { color: '#f0f0f0' }, ticks: { callback: v => v+'%' } },
       y: { grid: { display: false } }
     }
   }
