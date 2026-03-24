@@ -2200,6 +2200,22 @@ details .detail-content {
     </div>
   </div>
 
+  <!-- Aquisição por canal -->
+  <div class="card">
+    <div class="card-title">Como as clientes conheceram a Maricota</div>
+    <div class="chart-container" style="max-width:100%;height:220px;">
+      <canvas id="chartAquisicao"></canvas>
+    </div>
+    <p style="font-size:13px;color:#666;margin-top:12px;">15% das clientes vieram pelo Instagram — 3º canal de aquisição. Com 691 clientes na base, são ~104 clientes adquiridas via Instagram ao longo do tempo.</p>
+  </div>
+
+  <div class="card" style="background:#fff9e6;border-left:4px solid var(--yellow);">
+    <div class="card-title" style="color:var(--orange);">⚠️ Limitação dos dados de anúncios</div>
+    <p style="font-size:14px;line-height:1.7;">Os dados do Meta mostram <strong>cliques e conversas</strong>, não vendas. Não é possível saber quantos dos 1.455 cliques ou das 54 conversas viraram compra. A Maricota vende por crediário presencial e WhatsApp — canais que o Meta não rastreia.</p>
+    <p style="font-size:14px;line-height:1.7;margin-top:8px;">O ROI de 21,6x dos anúncios de conversa é <strong>estimativa</strong>, não dado real. Para medir de verdade, seria necessário perguntar a cada cliente "como você conheceu a loja?" e registrar no Phibo.</p>
+    <p style="font-size:14px;line-height:1.7;margin-top:8px;">O que sabemos com certeza: <strong>15% das clientes dizem que conheceram a loja pelo Instagram.</strong> Com R$760 investidos em ads no total, o custo por cliente adquirida via Instagram é estimado em ~R$7,30 — mas parte dessas clientes veio do orgânico, não dos ads.</p>
+  </div>
+
   <div class="insight">
     <strong>O Instagram da Maricota não é ruim — está mal direcionado.</strong> CPM R$5,82, CPC R$0,35 e engajamento 4% são métricas boas. O que faltou foi: loja funcionando para receber os cliques, conteúdo alinhado ao que a loja precisa vender, e consistência no investimento.
   </div>
@@ -2578,6 +2594,32 @@ new Chart(document.getElementById('chartBAGCategoria'), {
         ticks: { callback: v => v + '%' },
         grid: { color: '#f0f0f0' }
       },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// Aquisição por canal
+new Chart(document.getElementById('chartAquisicao'), {
+  type: 'bar',
+  data: {
+    labels: ['Já era cliente','Viu na rua','Indicação','Instagram','Outros'],
+    datasets: [{
+      data: [43.99, 21.98, 18.11, 15.12, 0.81],
+      backgroundColor: ['#abefe2', brandColors[1], brandColors[2], brandColors[0], '#ddd'],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.raw + '%' } }
+    },
+    scales: {
+      x: { grid: { color: '#f0f0f0' }, ticks: { callback: v => v+'%' } },
       y: { grid: { display: false } }
     }
   }
