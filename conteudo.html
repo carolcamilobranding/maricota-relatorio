@@ -3,570 +3,803 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maricota Store — Guia de Conteúdo 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Maricota Store Infantil — 590 Virais Analisados</title>
 <style>
-  :root {
-    --teal: #32e1c5;
-    --purple: #bf5cf8;
-    --pink: #ff6fd9;
-    --orange: #ff884d;
-    --yellow: #ffda42;
-    --blue: #00bbf7;
-    --bg: #FFFBFE;
-    --card: #FFFFFF;
-    --text: #2D2040;
-    --text-light: #7A6B8A;
-    --border: #F0E8F5;
-    --shadow: 0 4px 20px rgba(191,92,248,0.08);
-    --shadow-lg: 0 8px 40px rgba(191,92,248,0.12);
-    --gradient: linear-gradient(135deg, var(--teal), var(--blue), var(--purple), var(--pink), var(--orange), var(--yellow));
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Fredoka',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Fredoka',sans-serif;background:#FFFBFE;color:#2d2d2d;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
 
-  /* Header */
-  .header {
-    background: var(--gradient);
-    padding: 48px 0 40px;
-    text-align: center;
-    color: white;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content: '🦋';
-    position: absolute;
-    font-size: 120px;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.15;
-  }
-  .header h1 { font-size: 2.2rem; font-weight: 700; }
-  .header .tagline { font-size: 1.1rem; opacity: 0.9; margin-top: 4px; font-weight: 400; font-style: italic; }
-  .header .meta { margin-top: 16px; display: flex; justify-content: center; gap: 16px; font-size: 0.85rem; }
-  .header .badge { background: rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; backdrop-filter: blur(4px); }
+/* HEADER */
+.header{background:linear-gradient(135deg,#32e1c5,#00bbf7,#bf5cf8,#ff6fd9,#ff884d,#ffda42);padding:60px 20px 50px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:40px;background:#FFFBFE;border-radius:50% 50% 0 0}
+.header h1{font-size:2.8rem;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.15);margin-bottom:6px}
+.header .subtitle{font-size:1.15rem;font-weight:400;opacity:.95;margin-bottom:24px}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.badge{background:rgba(255,255,255,.25);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.4);padding:8px 20px;border-radius:30px;font-size:.95rem;font-weight:500}
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+/* SECTION */
+.section{padding:50px 0}
+.section-title{font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:8px;color:#2d2d2d}
+.section-subtitle{text-align:center;color:#888;font-size:1rem;margin-bottom:32px}
+.gradient-text{background:linear-gradient(90deg,#32e1c5,#bf5cf8,#ff6fd9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  /* Section */
-  .section { margin-top: 36px; }
-  .section-title {
-    font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
-    color: var(--purple); margin-bottom: 16px; padding-bottom: 8px;
-    border-bottom: 3px solid var(--purple); display: inline-block;
-  }
+/* KPI CARDS */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.kpi{background:#fff;border-radius:16px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s}
+.kpi:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.kpi .num{font-size:2.4rem;font-weight:700;line-height:1}
+.kpi .label{font-size:.85rem;color:#888;margin-top:6px;font-weight:400}
+.c1 .num{color:#32e1c5}.c2 .num{color:#00bbf7}.c3 .num{color:#bf5cf8}.c4 .num{color:#ff6fd9}.c5 .num{color:#ff884d}.c6 .num{color:#ffda42}
 
-  /* Golden Rule */
-  .golden-rule {
-    background: linear-gradient(135deg, #FFF8E1 0%, #FFF3E0 100%);
-    border: 2px solid var(--yellow);
-    border-radius: 16px;
-    padding: 24px 28px;
-    margin: 24px 0;
-    font-size: 0.95rem;
-    position: relative;
-  }
-  .golden-rule::before { content: '✨'; font-size: 1.5rem; margin-right: 8px; }
-  .golden-rule strong { color: var(--orange); }
+/* INSIGHT CARDS */
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.insight{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:5px solid;transition:transform .2s}
+.insight:hover{transform:translateY(-3px)}
+.insight:nth-child(1){border-color:#bf5cf8}.insight:nth-child(2){border-color:#32e1c5}.insight:nth-child(3){border-color:#ff6fd9}
+.insight h3{font-size:1.1rem;font-weight:600;margin-bottom:10px}
+.insight p{font-size:.92rem;color:#555}
 
-  /* Cards */
-  .card { background: var(--card); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 16px; }
+/* PATTERN CARDS */
+.pattern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.pattern{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid;transition:transform .2s}
+.pattern:hover{transform:translateY(-3px)}
+.pattern:nth-child(1){border-color:#32e1c5}.pattern:nth-child(2){border-color:#00bbf7}.pattern:nth-child(3){border-color:#bf5cf8}.pattern:nth-child(4){border-color:#ff6fd9}.pattern:nth-child(5){border-color:#ff884d}.pattern:nth-child(6){border-color:#ffda42}.pattern:nth-child(7){border-color:#32e1c5}.pattern:nth-child(8){border-color:#00bbf7}.pattern:nth-child(9){border-color:#bf5cf8}.pattern:nth-child(10){border-color:#ff6fd9}
+.pattern .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pattern h4{font-size:1rem;font-weight:600}
+.freq{font-size:.78rem;background:#f0f0f0;padding:4px 10px;border-radius:20px;font-weight:500;white-space:nowrap}
+.pattern .trigger{font-size:.82rem;color:#bf5cf8;font-weight:500;margin-bottom:6px}
+.pattern .desc{font-size:.88rem;color:#666}
+.repl-badge{display:inline-block;margin-top:8px;font-size:.78rem;padding:3px 12px;border-radius:20px;font-weight:500}
+.repl-badge.easy{background:#d4faf3;color:#1a9e7f}.repl-badge.med{background:#fef3d9;color:#c48d0a}
 
-  /* Grids */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  @media (max-width: 900px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
+/* TABLE */
+.table-wrap{overflow-x:auto;max-height:600px;overflow-y:auto;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.table-wrap table{width:100%;border-collapse:collapse;min-width:900px;background:#fff}
+.table-wrap thead{position:sticky;top:0;z-index:2}
+.table-wrap th{background:linear-gradient(135deg,#32e1c5,#00bbf7);color:#fff;padding:14px 12px;font-size:.82rem;font-weight:600;text-align:left;white-space:nowrap}
+.table-wrap td{padding:12px;font-size:.82rem;border-bottom:1px solid #f0f0f0;vertical-align:top}
+.table-wrap tr:hover td{background:#f9f4ff}
+.plat-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.75rem;font-weight:500;color:#fff;white-space:nowrap}
+.plat-tiktok{background:#ff6fd9}.plat-ig{background:#bf5cf8}.plat-yt{background:#ff884d}.plat-multi{background:#00bbf7}.plat-redes{background:#32e1c5}
+.repl-sim{color:#1a9e7f;font-weight:500}.repl-ref{color:#c48d0a;font-weight:500}
 
-  /* KPI */
-  .kpi {
-    background: var(--card); border-radius: 16px; padding: 20px; text-align: center;
-    box-shadow: var(--shadow); border: 1px solid var(--border); transition: transform 0.2s;
-  }
-  .kpi:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-  .kpi .icon { font-size: 2rem; margin-bottom: 6px; }
-  .kpi .value { font-size: 2.2rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .kpi .label { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+/* BAR CHARTS */
+.bar-chart{max-width:700px;margin:0 auto}
+.bar-row{display:flex;align-items:center;margin-bottom:10px;gap:12px}
+.bar-label{width:220px;font-size:.85rem;font-weight:500;text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:28px;background:#f0f0f0;border-radius:14px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:14px;background:linear-gradient(90deg,#32e1c5,#00bbf7,#bf5cf8);transition:width .6s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:.75rem;color:#fff;font-weight:500;min-width:32px}
+.bar-fill-warm{background:linear-gradient(90deg,#ffda42,#ff884d,#ff6fd9)}
 
-  /* Content Idea Card */
-  .idea-card {
-    background: var(--card); border-radius: 16px; padding: 20px; box-shadow: var(--shadow);
-    border: 1px solid var(--border); transition: transform 0.2s; position: relative; overflow: hidden;
-  }
-  .idea-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-  .idea-card .idea-num {
-    position: absolute; top: 12px; right: 16px; font-size: 2.5rem; font-weight: 700;
-    opacity: 0.08; color: var(--purple);
-  }
-  .idea-card .format-badge {
-    display: inline-block; padding: 3px 12px; border-radius: 12px; font-size: 0.72rem;
-    font-weight: 600; margin-bottom: 8px;
-  }
-  .badge-reel { background: #E8F5E9; color: #2E7D32; }
-  .badge-tiktok { background: #E3F2FD; color: #1565C0; }
-  .badge-carousel { background: #FFF3E0; color: #E65100; }
-  .badge-story { background: #F3E5F5; color: #7B1FA2; }
-  .badge-serie { background: #FCE4EC; color: #C62828; }
-  .idea-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
-  .idea-card .concept { font-size: 0.88rem; color: var(--text-light); margin-bottom: 10px; }
-  .idea-card .hook-preview {
-    background: #F8F4FF; border-radius: 8px; padding: 10px 14px; font-size: 0.82rem;
-    border-left: 3px solid var(--purple); font-style: italic; color: var(--text);
-  }
-  .idea-card .difficulty {
-    display: inline-block; margin-top: 10px; padding: 2px 10px; border-radius: 10px;
-    font-size: 0.72rem; font-weight: 500;
-  }
-  .diff-facil { background: #E8F5E9; color: #2E7D32; }
-  .diff-medio { background: #FFF3E0; color: #E65100; }
+/* HOOKS */
+.hooks-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.hook-cat{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.hook-cat h4{font-size:.95rem;font-weight:600;margin-bottom:14px}
+.hook-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:6px 14px;border-radius:20px;font-size:.82rem;background:#f5f0ff;color:#7b4fcf;cursor:default;transition:all .2s;border:1px solid transparent}
+.pill:hover{background:#bf5cf8;color:#fff;border-color:#bf5cf8;transform:scale(1.04)}
 
-  /* Calendar */
-  .calendar { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-  .calendar thead th {
-    background: linear-gradient(135deg, var(--purple), var(--pink));
-    color: white; padding: 12px 14px; text-align: left; font-weight: 500; font-size: 0.82rem;
-    text-transform: uppercase; letter-spacing: 0.5px;
-  }
-  .calendar thead th:first-child { border-radius: 12px 0 0 0; }
-  .calendar thead th:last-child { border-radius: 0 12px 0 0; }
-  .calendar td { padding: 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .calendar tr:hover td { background: #FEFAFF; }
-  .calendar .day { font-weight: 600; color: var(--purple); }
+/* OPPORTUNITY CARDS */
+.opp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.opp{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s;position:relative;overflow:hidden}
+.opp:hover{transform:translateY(-3px)}
+.opp::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#32e1c5,#00bbf7,#bf5cf8,#ff6fd9)}
+.opp .opp-num{font-size:.75rem;font-weight:600;color:#bf5cf8;margin-bottom:6px}
+.opp h4{font-size:1rem;font-weight:600;margin-bottom:8px}
+.opp p{font-size:.88rem;color:#666;margin-bottom:8px}
+.opp .opp-meta{font-size:.78rem;color:#999}
+.opp .opp-meta span{background:#f5f0ff;color:#7b4fcf;padding:2px 10px;border-radius:12px;margin-right:6px}
 
-  /* Hooks */
-  .hook-pill {
-    display: inline-block; background: #F8F4FF; border: 1px solid #E8D5FF;
-    padding: 8px 16px; border-radius: 12px; font-size: 0.85rem; margin: 4px;
-    font-style: italic; color: var(--text); transition: all 0.2s;
-  }
-  .hook-pill:hover { background: var(--purple); color: white; border-color: var(--purple); }
+/* CALENDAR */
+.cal-week{margin-bottom:28px}
+.cal-week h3{font-size:1.1rem;font-weight:600;margin-bottom:12px;padding-left:4px}
+.cal-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.cal-table th{background:#f8f4ff;padding:10px 12px;font-size:.78rem;font-weight:600;text-align:left;color:#7b4fcf}
+.cal-table td{padding:10px 12px;font-size:.82rem;border-top:1px solid #f0f0f0;vertical-align:top}
+.cal-table tr:hover td{background:#fdf8ff}
 
-  /* Don't Do */
-  .dont-card {
-    background: #FFF5F5; border-radius: 12px; padding: 16px 20px;
-    border-left: 4px solid #E53E3E; margin-bottom: 10px; font-size: 0.88rem;
-  }
-  .dont-card strong { color: #C53030; }
+/* DO/DONT */
+.dodont-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.dodont-col h3{font-size:1.1rem;font-weight:600;margin-bottom:14px;text-align:center}
+.dont-card{background:#fff0f0;border:1px solid #ffc9c9;border-radius:12px;padding:14px 18px;margin-bottom:10px;font-size:.88rem;transition:transform .2s}
+.dont-card:hover{transform:translateX(4px)}
+.dont-card::before{content:'✗ ';color:#e53935;font-weight:700}
+.do-card{background:#edfff5;border:1px solid #b2f2d0;border-radius:12px;padding:14px 18px;margin-bottom:10px;font-size:.88rem;transition:transform .2s}
+.do-card:hover{transform:translateX(4px)}
+.do-card::before{content:'✓ ';color:#1a9e7f;font-weight:700}
 
-  /* Do Card */
-  .do-card {
-    background: #F0FFF4; border-radius: 12px; padding: 16px 20px;
-    border-left: 4px solid var(--teal); margin-bottom: 10px; font-size: 0.88rem;
-  }
-  .do-card strong { color: #276749; }
+/* FOOTER */
+.footer{background:linear-gradient(135deg,#32e1c5,#00bbf7,#bf5cf8,#ff6fd9,#ff884d,#ffda42);padding:50px 20px;text-align:center;color:#fff;position:relative;margin-top:40px}
+.footer::before{content:'';position:absolute;top:-2px;left:0;right:0;height:40px;background:#FFFBFE;border-radius:0 0 50% 50%}
+.footer blockquote{font-size:1.3rem;font-weight:500;max-width:700px;margin:0 auto;line-height:1.5;text-shadow:0 2px 8px rgba(0,0,0,.1)}
+.footer .brand{margin-top:20px;font-size:.9rem;opacity:.8}
 
-  /* Patterns */
-  .pattern-card {
-    background: var(--card); border-radius: 16px; padding: 20px; box-shadow: var(--shadow);
-    border-top: 4px solid; position: relative;
-  }
-  .pattern-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
-  .pattern-card p { font-size: 0.85rem; color: var(--text-light); }
-  .pattern-card .rep {
-    margin-top: 8px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* Trend table */
-  .trend-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  .trend-table thead th {
-    background: #F8F4FF; padding: 10px 12px; text-align: left; font-weight: 600;
-    font-size: 0.78rem; text-transform: uppercase; color: var(--purple); border-bottom: 2px solid var(--border);
-  }
-  .trend-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
-  .trend-table tr:hover { background: #FEFAFF; }
-  .maturity { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
-  .mat-emergente { background: #E8F5E9; color: #2E7D32; }
-  .mat-crescimento { background: #E3F2FD; color: #1565C0; }
-  .mat-consolidada { background: #FFF3E0; color: #E65100; }
-
-  /* Priority order */
-  .priority-card {
-    background: linear-gradient(135deg, #FEFAFF, #FFF8FC);
-    border-radius: 16px; padding: 20px; border: 2px solid var(--purple);
-    display: flex; gap: 16px; align-items: center; margin-bottom: 12px;
-  }
-  .priority-card .week-badge {
-    background: var(--gradient); color: white; padding: 6px 14px; border-radius: 12px;
-    font-size: 0.78rem; font-weight: 600; white-space: nowrap;
-  }
-  .priority-card .ideas { font-size: 0.9rem; }
-  .priority-card .ideas strong { color: var(--purple); }
-
-  /* Quote */
-  .manifesto {
-    background: var(--gradient); color: white; border-radius: 16px; padding: 32px;
-    text-align: center; font-size: 1.2rem; font-weight: 500; line-height: 1.7;
-    margin: 24px 0; position: relative;
-  }
-  .manifesto .butterfly { font-size: 3rem; display: block; margin-bottom: 12px; }
-
-  /* Footer */
-  .footer {
-    text-align: center; padding: 40px 0; color: var(--text-light); font-size: 0.82rem;
-    border-top: 1px solid var(--border); margin-top: 40px;
-  }
+@media(max-width:768px){
+.header h1{font-size:1.8rem}
+.kpi-grid{grid-template-columns:repeat(2,1fr)}
+.insight-grid,.pattern-grid,.opp-grid{grid-template-columns:1fr}
+.bar-label{width:140px;font-size:.78rem}
+.hooks-section{grid-template-columns:1fr}
+.dodont-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.kpi-grid{grid-template-columns:repeat(2,1fr)}
+.badges{flex-direction:column;align-items:center}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV BAR -->
-<div style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(45,32,64,0.95);backdrop-filter:blur(8px);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;">
-  <a href="index.html" style="color:#fff;text-decoration:none;font-family:'Fredoka',sans-serif;font-size:14px;display:flex;align-items:center;gap:8px;">
+<div style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(45,32,64,0.95);backdrop-filter:blur(8px);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-family:system-ui,sans-serif;">
+  <a href="index.html" style="color:#fff;text-decoration:none;font-size:14px;display:flex;align-items:center;gap:8px;">
     <span style="font-size:18px;">←</span> Voltar ao Diagnóstico
   </a>
-  <span style="color:rgba(255,255,255,0.5);font-size:12px;font-family:'Fredoka',sans-serif;">Maricota Store · Guia de Conteúdo</span>
+  <span style="color:rgba(255,255,255,0.5);font-size:12px;">Maricota Store · Pesquisa de Conteúdo Viral</span>
 </div>
 
 <!-- HEADER -->
-<div class="header" style="padding-top:88px;">
-  <div class="container">
-    <h1>Maricota Store Infantil</h1>
-    <div class="tagline">Para voar com estilo desde cedo 🦋</div>
-    <p style="margin-top:8px;font-size:1rem;">Guia de Conteúdo — Tendências & Virais 2026</p>
-    <div class="meta">
-      <span class="badge">21 ideias de conteúdo</span>
-      <span class="badge">20 hooks prontos</span>
-      <span class="badge">Calendário semanal</span>
-      <span class="badge">24 Mar 2026</span>
-    </div>
-  </div>
-</div>
-
+<header class="header" style="padding-top:72px;">
 <div class="container">
+<p style="font-size:2.4rem;margin-bottom:4px">🦋</p>
+<h1>590 Virais Analisados</h1>
+<p class="subtitle">Maricota Store Infantil — Pesquisa de Tendencias de Conteudo Viral 2024-2026</p>
+<div class="badges">
+<span class="badge">25 Relatorios</span>
+<span class="badge">6 Plataformas</span>
+<span class="badge">15 Mercados</span>
+<span class="badge">10 Padroes</span>
+<span class="badge">30 Hooks</span>
+<span class="badge">24/03/2026</span>
+</div>
+</div>
+</header>
 
-  <!-- KPIs -->
-  <div class="section">
-    <div class="grid-4">
-      <div class="kpi">
-        <div class="icon">🔥</div>
-        <div class="value">10</div>
-        <div class="label">Virais Analisados</div>
-      </div>
-      <div class="kpi">
-        <div class="icon">📈</div>
-        <div class="value">20</div>
-        <div class="label">Tendências Mapeadas</div>
-      </div>
-      <div class="kpi">
-        <div class="icon">✨</div>
-        <div class="value">21</div>
-        <div class="label">Ideias de Conteúdo</div>
-      </div>
-      <div class="kpi">
-        <div class="icon">🎣</div>
-        <div class="value">20</div>
-        <div class="label">Hooks Prontos</div>
-      </div>
-    </div>
-  </div>
+<!-- KPIs -->
+<section class="section">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Numeros-Chave</span></h2>
+<p class="section-subtitle">Panorama geral da pesquisa</p>
+<div class="kpi-grid">
+<div class="kpi c1"><div class="num">590</div><div class="label">Total de Virais</div></div>
+<div class="kpi c2"><div class="num">25</div><div class="label">Arquivos Pesquisados</div></div>
+<div class="kpi c3"><div class="num">10</div><div class="label">Padroes Identificados</div></div>
+<div class="kpi c4"><div class="num">30</div><div class="label">Hooks Prontos</div></div>
+<div class="kpi c5"><div class="num">15</div><div class="label">Formatos Rankeados</div></div>
+<div class="kpi c6"><div class="num">12</div><div class="label">Gatilhos Emocionais</div></div>
+</div>
+</div>
+</section>
 
-  <!-- GOLDEN RULE -->
-  <div class="golden-rule">
-    <strong>Regra de ouro:</strong> Se a ideia precisar de estúdio profissional, modelo, ou script engessado — descarta. Se cabe num celular, numa tarde, com uma criança de verdade — é a ideia certa.
-  </div>
+<!-- 3 KEY INSIGHTS -->
+<section class="section" style="background:#faf7ff;padding:50px 0">
+<div class="container">
+<h2 class="section-title">🦋 <span class="gradient-text">Os 3 Insights Mais Importantes</span></h2>
+<p class="section-subtitle">Descobertas que mudam a estrategia da Maricota</p>
+<div class="insight-grid">
+<div class="insight">
+<h3>1. "Nao Veste Mini Adultos" e o Tema Mais Quente</h3>
+<p>O debate sobre adultizacao infantil explodiu: video do Felca com 51M views, lei federal criada, tema dominante global. A Maricota ja tem esse DNA — precisa apenas ativa-lo sistematicamente no conteudo. Manifestos autenticos viralizam mais que conteudo de produto.</p>
+</div>
+<div class="insight">
+<h3>2. Autenticidade Supera Producao</h3>
+<p>Os virais mais fortes nao sao os mais produzidos. Sao os que capturam momentos genuinos: crianca recusando roupa, bebe escolhendo look, mae correndo atras do filho. A Maricota, como marca pequena de Campos Altos/MG, tem vantagem — autenticidade nao se compra com orcamento.</p>
+</div>
+<div class="insight">
+<h3>3. Conteudo Educativo Salvavel e Crescimento Sustentavel</h3>
+<p>Carrosseis educativos geram 3x mais saves que outros formatos. Saves sao o sinal mais forte para o algoritmo do Instagram. Conteudo evergreen sobre algodao 100%, cuidados com tecidos e combinacoes de pecas continua gerando trafego por meses.</p>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- TOP 5 PADRÕES VIRAIS -->
-  <div class="section">
-    <div class="section-title">5 Padrões que Viralizam no Nicho</div>
-    <div class="grid-3" style="grid-template-columns: repeat(5, 1fr);">
-      <div class="pattern-card" style="border-color:var(--teal);">
-        <h4>🪄 Transformação Visual</h4>
-        <p>Antes/depois — pijama → look completo. Surpresa + dopamina.</p>
-        <div class="rep" style="color:var(--teal);">Fácil de replicar</div>
-      </div>
-      <div class="pattern-card" style="border-color:var(--yellow);">
-        <h4>😂 Autenticidade Infantil</h4>
-        <p>Falas espontâneas, humor natural da criança. Custo zero.</p>
-        <div class="rep" style="color:#856404;">Fácil de replicar</div>
-      </div>
-      <div class="pattern-card" style="border-color:var(--blue);">
-        <h4>💾 Utilidade que Salva</h4>
-        <p>Carrossel educativo, dicas práticas. Save = algoritmo.</p>
-        <div class="rep" style="color:var(--blue);">Replicabilidade média</div>
-      </div>
-      <div class="pattern-card" style="border-color:var(--purple);">
-        <h4>👥 Identidade de Tribo</h4>
-        <p>"Não veste mini adultos" — debates que unem mães.</p>
-        <div class="rep" style="color:var(--purple);">Replicabilidade média</div>
-      </div>
-      <div class="pattern-card" style="border-color:var(--pink);">
-        <h4>📸 Prova Social Real</h4>
-        <p>UGC de clientes, unboxing, reação da criança. 92% de confiança.</p>
-        <div class="rep" style="color:var(--pink);">Fácil de replicar</div>
-      </div>
-    </div>
-  </div>
+<!-- TOP 10 PATTERNS -->
+<section class="section">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Top 10 Padroes de Viralizacao</span></h2>
+<p class="section-subtitle">Os padroes que se repetem nos 590 virais analisados</p>
+<div class="pattern-grid">
+<div class="pattern">
+<div class="top"><h4>1. Crianca com Opiniao Propria</h4><span class="freq">22/25 arquivos</span></div>
+<div class="trigger">Gatilho: Identificacao universal + humor involuntario</div>
+<div class="desc">Crianca recusa, escolhe, critica ou se apaixona por uma peca. A autenticidade da reacao e o conteudo. Retencao alta — ninguem para de assistir antes de ver o resultado.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>2. Transicao / Reveal de Look</h4><span class="freq">20/25 arquivos</span></div>
+<div class="trigger">Gatilho: Surpresa + satisfacao visual</div>
+<div class="desc">Crianca de pijama e, com corte no beat, surge com look completo. 60% maior taxa de conclusao, 4x mais compartilhamentos. #outfitswitch com 600M+ views.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>3. Identificacao Materna + CTA</h4><span class="freq">19/25 arquivos</span></div>
+<div class="trigger">Gatilho: "Nao sou a unica" + pertencimento</div>
+<div class="desc">"Marca uma mae que..." — situacao que toda mae reconhece. Marcacoes = distribuicao exponencial. @tatiinfante fez 2,4M likes com esse formato.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>4. Mini-Me / Looks Combinando</h4><span class="freq">18/25 arquivos</span></div>
+<div class="trigger">Gatilho: Amor familiar + aspiracao + fofura</div>
+<div class="desc">Mae+filha, pai+filho ou irmaos com looks coordenados. Dupla audiencia: moda + familia. Familia Chavez: 56M views.</div>
+<span class="repl-badge med">Medio</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>5. Humor Materno sobre Roupa</h4><span class="freq">17/25 arquivos</span></div>
+<div class="trigger">Gatilho: Riso + solidariedade + validacao</div>
+<div class="desc">Roupa manchada em 5 min, pai vestindo filho "errado", expectativa vs realidade. Humor gera compartilhamento alem do nicho.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>6. Conteudo Educativo Salvavel</h4><span class="freq">16/25 arquivos</span></div>
+<div class="trigger">Gatilho: Praticidade + "vou precisar disso"</div>
+<div class="desc">Carrosseis com guia de tecidos, tabela de tamanhos, guarda-roupa capsula. 3x mais saves que outros formatos. Conteudo evergreen.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>7. Haul / Unboxing com Reacao</h4><span class="freq">15/25 arquivos</span></div>
+<div class="trigger">Gatilho: Expectativa + alegria + desejo de compra</div>
+<div class="desc">Crianca ou mae abre caixa de roupas novas. Reacao genuina e o conteudo. Alta retencao — assistem ate o fim. Alto CTR para links.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>8. Bastidores de Small Business</h4><span class="freq">14/25 arquivos</span></div>
+<div class="trigger">Gatilho: ASMR + admiracao + identificacao</div>
+<div class="desc">ASMR de embalagem, dia na vida da lojista, curadoria das pecas. #packingorders com bilhoes de views. @stardustbyallie: 1,3M likes.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>9. Debate / Polemica Controlada</h4><span class="freq">13/25 arquivos</span></div>
+<div class="trigger">Gatilho: Indignacao + validacao + curiosidade</div>
+<div class="desc">Posicao sobre tema divisivo: mini adulto, genero neutro, fast fashion vs qualidade. Comentarios de concordancia e discordancia = alcance massivo.</div>
+<span class="repl-badge med">Medio</span>
+</div>
+<div class="pattern">
+<div class="top"><h4>10. Nostalgia / Passagem do Tempo</h4><span class="freq">12/25 arquivos</span></div>
+<div class="trigger">Gatilho: Luto saudoso + orgulho + "o tempo voa"</div>
+<div class="desc">Roupinha que nao cabe mais, primeiro/ultimo dia de escola. Comentarios emocionais longos = sinal forte para algoritmo. Alto compartilhamento entre geracoes.</div>
+<span class="repl-badge easy">Facil</span>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- IDEIAS: REELS/TIKTOK -->
-  <div class="section">
-    <div class="section-title">Reels / TikTok Virais — 8 Ideias</div>
-    <div class="grid-2">
-      <div class="idea-card"><div class="idea-num">01</div>
-        <span class="format-badge badge-reel">Reel / TikTok</span>
-        <h4>"Do Caos ao Look"</h4>
-        <p class="concept">Transição antes/depois: criança de pijama → look completo com giro e sorriso.</p>
-        <div class="hook-preview">"Ela nem sabia o que estava por vir..."</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">02</div>
-        <span class="format-badge badge-tiktok">TikTok / Reel</span>
-        <h4>"Ela Escolheu. Eu Só Filmei."</h4>
-        <p class="concept">Criança escolhe o look sozinha. Zero roteiro, zero edição. Autenticidade pura.</p>
-        <div class="hook-preview">"Deixei ela escolher. Me arrependi? Nem um pouco."</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">03</div>
-        <span class="format-badge badge-reel">Reel / TikTok</span>
-        <h4>"GRWM: Primeira Semana de Aula"</h4>
-        <p class="concept">Get Ready With Me da volta às aulas — manhã caótica real até o look final na porta.</p>
-        <div class="hook-preview">"GRWM: primeiro dia de aula da minha filha de [X] anos"</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">04</div>
-        <span class="format-badge badge-tiktok">TikTok</span>
-        <h4>"POV: Mãe de Criança com Opinião Própria"</h4>
-        <p class="concept">Humor/identificação: situação cômica real da maternidade + moda. 20min de produção.</p>
-        <div class="hook-preview">"POV: sua filha decide que quer usar a roupa favorita TODOS OS DIAS"</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">05</div>
-        <span class="format-badge badge-reel">TikTok / Reel</span>
-        <h4>"Mini Eu — O Reveal"</h4>
-        <p class="concept">Mãe e filha de costas, giram revelando looks que combinam. Transição emocional.</p>
-        <div class="hook-preview">"Combinamos o look hoje"</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">06</div>
-        <span class="format-badge badge-tiktok">TikTok / Reel</span>
-        <h4>"Realidade vs. Expectativa"</h4>
-        <p class="concept">Bastidores cômicos de tentar tirar "a foto perfeita" da criança. 23 tentativas.</p>
-        <div class="hook-preview">"Tentei tirar a foto da nova coleção. O resultado:"</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">07</div>
-        <span class="format-badge badge-reel">Reel</span>
-        <h4>"5 Looks, 5 Dias, 1 Vídeo"</h4>
-        <p class="concept">Beat sync: um look por batida da música. Visual dinâmico, super buscável.</p>
-        <div class="hook-preview">"5 looks para a semana toda — anota"</div>
-        <span class="difficulty diff-medio">Médio</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">08</div>
-        <span class="format-badge badge-reel">Reel / TikTok</span>
-        <h4>"A Roupa que Passou em TUDO"</h4>
-        <p class="concept">Uma peça sobrevivendo à semana: barro, macarrão, chuva — e saindo bem na lavagem.</p>
-        <div class="hook-preview">"Ela entrou nessa semana impecável. Olha o que aconteceu."</div>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-    </div>
-  </div>
+<!-- TOP 50 VIRALS TABLE -->
+<section class="section" style="background:#faf7ff;padding:50px 0">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Top 50 Virais Mais Relevantes</span></h2>
+<p class="section-subtitle">Os conteudos virais mais relevantes para a estrategia da Maricota</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>#</th><th>Nome / Perfil</th><th>Plataforma</th><th>Formato</th><th>Descricao</th><th>Metricas</th><th>Gatilho</th><th>Replicavel?</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>@coloraloja (BR)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Humor de loja</td><td>Loja responde clientes com humor ironico</td><td>930K likes, 11,7K comments</td><td>Identificacao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>2</td><td>@tatiinfante (BR)</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>CTA humor</td><td>"Marca uma mae que tem os filho desse modelo"</td><td>2,4M likes, 40K comments</td><td>Identificacao + humor</td><td class="repl-sim">Sim</td></tr>
+<tr><td>3</td><td>@leticiapanarr / Celine</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>GRWM bebe</td><td>Bebe "Zeca Pagodona" escolhe proprio look</td><td>50M+ views, 3M+ seg</td><td>Fofura + humor</td><td class="repl-sim">Sim</td></tr>
+<tr><td>4</td><td>Carter's (EUA)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Manifesto</td><td>"More Than Just Cute" — bebe suja roupa nova</td><td>Campanha viral, 2,8M seg</td><td>Humor + autenticidade</td><td class="repl-sim">Sim</td></tr>
+<tr><td>5</td><td>@emma.kay.brown / Capri</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Crianca protagonista</td><td>Filha recusa roupas, so quer vestido princesa</td><td>5M likes</td><td>Identificacao universal</td><td class="repl-sim">Sim</td></tr>
+<tr><td>6</td><td>@siara.fuller / Zya</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Crianca opiniao</td><td>Bebe de 2 anos opina sobre vestidos no Target</td><td>9M+ views</td><td>Graca + identificacao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>7</td><td>Hack sapateira viagem</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Hack pratico</td><td>Looks em bolsos de sapateira para viagem</td><td>Milhoes views</td><td>Praticidade</td><td class="repl-sim">Sim</td></tr>
+<tr><td>8</td><td>@stardustbyallie (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>ASMR embalagem</td><td>Embalando pedidos com sons satisfatorios</td><td>1,3M likes</td><td>ASMR + admiracao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>9</td><td>@graciakidsoficial (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel educativo</td><td>Guarda-roupa capsula infantil com 15 pecas</td><td>~9K saves</td><td>Economia + inteligencia</td><td class="repl-sim">Sim</td></tr>
+<tr><td>10</td><td>@mundoinfantilstore</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel volta as aulas</td><td>8 looks prontos para primeiro dia de aula</td><td>92K curtidas, ~300K saves</td><td>Nostalgia + solucao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>11</td><td>@virginiafonseca (BR)</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Celebridade + birra</td><td>Maria Alice reclama "roupa de crianca"</td><td>42,3M seguidores</td><td>Fofura + humor</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>12</td><td>Trend Mini-Me (Global)</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Matching reveal</td><td>Looks coordenados mae+filha com reveal</td><td>Bilhoes views</td><td>Amor materno</td><td class="repl-sim">Sim</td></tr>
+<tr><td>13</td><td>@brasmodaoficial (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel educativo</td><td>Algodao vs Poliester para pele infantil</td><td>~12K saves</td><td>Protecao maternal</td><td class="repl-sim">Sim</td></tr>
+<tr><td>14</td><td>Trend "Como vestiria"</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>POV mae</td><td>Mae monta look, filho aparece vestido</td><td>Centenas de milhares</td><td>Humor + orgulho</td><td class="repl-sim">Sim</td></tr>
+<tr><td>15</td><td>@kuuipodawn (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Mae julgada</td><td>"Karen" critica mae por filho sem casaco</td><td>13M views</td><td>Indignacao</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>16</td><td>Georgia Mom (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Hack materno</td><td>Organizacao de roupas por dia da semana</td><td>7M views</td><td>Utilidade + alivio</td><td class="repl-sim">Sim</td></tr>
+<tr><td>17</td><td>@fabianajustus (BR)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Antes/depois</td><td>Recem-nascido vs bebe de 12 meses estiloso</td><td>3,1M views</td><td>Emocao + glow-up</td><td class="repl-sim">Sim</td></tr>
+<tr><td>18</td><td>@infantilita (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Transicao criativa</td><td>Boneca vira crianca real usando a peca</td><td>800K-1,2M views</td><td>Surpresa + desejo</td><td class="repl-sim">Sim</td></tr>
+<tr><td>19</td><td>Elizabeth McCravy</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Momento espontaneo</td><td>Bebe fazendo flexao com musica dramatica</td><td>3,2M views, 125K shares</td><td>Riso + surpresa</td><td class="repl-sim">Sim</td></tr>
+<tr><td>20</td><td>@outletdagestante</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel gestante</td><td>Saida maternidade: o que bebe usa nos primeiros 7 dias</td><td>~25K saves</td><td>Ansiedade resolvida</td><td class="repl-sim">Sim</td></tr>
+<tr><td>21</td><td>Familia Chavez (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Before/after</td><td>Mae veste roupa da filha — transformacao</td><td>56M views</td><td>Surpresa + debate</td><td class="repl-sim">Sim</td></tr>
+<tr><td>22</td><td>@felca (BR)</td><td><span class="plat-badge plat-yt">YouTube</span></td><td>Documentario</td><td>"Adultizacao" — 50 min sobre exploracao infantil</td><td>51M views, gerou lei</td><td>Indignacao moral</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>23</td><td>Hack body envelope</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Hack de mae</td><td>Body removido por baixo, nao pela cabeca</td><td>2M+ views</td><td>Surpresa + alivio</td><td class="repl-sim">Sim</td></tr>
+<tr><td>24</td><td>@brandili (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel tendencias</td><td>7 Tendencias moda infantil verao 2025</td><td>~15K saves</td><td>Aspiracao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>25</td><td>@piupiuchick (PT)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Editorial vibrante</td><td>Looks retro anos 80/90, cores vibrantes</td><td>200K+ seg</td><td>Estetica + desejo</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>26</td><td>@naptown_thrifts</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Denuncia pink tax</td><td>Roupa menina mais fina/cara que menino</td><td>1,7M views</td><td>Indignacao</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>27</td><td>@sachalouisetrigg</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Humor silencioso</td><td>Mae segura casaco da filha que recusa usar</td><td>700K views</td><td>Identificacao total</td><td class="repl-sim">Sim</td></tr>
+<tr><td>28</td><td>@marymoniharp (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Emocional casal</td><td>Pais choram no primeiro dia de escola</td><td>7,5M views</td><td>Choro + riso</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>29</td><td>@the_goddard_fam</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Hack educativo</td><td>Toddler dobra propria roupa com papelao DIY</td><td>66,7M views</td><td>Surpresa + orgulho</td><td class="repl-sim">Sim</td></tr>
+<tr><td>30</td><td>@doughertydozen (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Volume extremo</td><td>Mae de 10 filhos prepara 10 marmitas</td><td>14,1M views</td><td>Admiracao</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>31</td><td>Miss Mouth's (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Demo produto</td><td>Mancha de mirtilo some em segundos ao vivo</td><td>100K+ likes</td><td>Transformacao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>32</td><td>Trend GRWM 1o Dia Aula</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>GRWM sazonal</td><td>Ritual de preparar crianca para escola</td><td>Milhoes views</td><td>Nostalgia + orgulho</td><td class="repl-sim">Sim</td></tr>
+<tr><td>33</td><td>@bobochoses (ES)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Manifesto artistico</td><td>Colecoes com storytelling "For President"</td><td>450K+ seg</td><td>Nostalgia + critica</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>34</td><td>@dangerouscloset</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Familia Natal</td><td>Familia combinando no Natal — looks coordenados</td><td>142K curtidas, ~480K saves</td><td>Calor familiar</td><td class="repl-sim">Sim</td></tr>
+<tr><td>35</td><td>Ada Aziza (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Founder story</td><td>Mae imigrante cria marca do zero</td><td>1,2M seg, 20M views</td><td>Autenticidade</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>36</td><td>@empirefamtiktok</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Crianca estilista</td><td>Filha escolhe look da mae — inversao</td><td>1,5M curtidas</td><td>Humor + conexao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>37</td><td>@parlendamoda (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel tecidos</td><td>Por que algodao e melhor para pele infantil</td><td>~8K saves</td><td>Protecao + educacao</td><td class="repl-sim">Sim</td></tr>
+<tr><td>38</td><td>@julianafogosa (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Opiniao polarizadora</td><td>"Crianca tem que usar roupa de crianca!"</td><td>363K seg</td><td>Divisao de opinioes</td><td class="repl-sim">Sim</td></tr>
+<tr><td>39</td><td>@patpatclothing</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Demo funcional</td><td>Camiseta StainProof repele liquido ao vivo</td><td>3,5M views</td><td>Alivio + surpresa</td><td class="repl-sim">Sim</td></tr>
+<tr><td>40</td><td>Trend "Roupa nao cabe"</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Emocional</td><td>Mae guarda roupinha pequena com saudade</td><td>Alto engajamento</td><td>Memoria</td><td class="repl-sim">Sim</td></tr>
+<tr><td>41</td><td>@fashionkids (Global)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Curadoria flat lay</td><td>Back to School Edit — grid perfeito</td><td>7,5M seg, +15K saves</td><td>Organizacao</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>42</td><td>@angusthelabel (AU)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Revelacao padrao</td><td>Estampas menino=predador, menina=presa</td><td>Dezenas de milhares</td><td>Revelacao perturbadora</td><td class="repl-sim">Sim</td></tr>
+<tr><td>43</td><td>@lindseygurk (EUA)</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Imitacao comica</td><td>Mae recria comportamento da filha se vestindo</td><td>3,6M seg</td><td>Humor + identificacao</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>44</td><td>Kyte Baby (EUA)</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Comunidade</td><td>"Bamboo Moms" — comunidade identitaria</td><td>100K+ membros</td><td>Pertencimento</td><td class="repl-sim">Sim</td></tr>
+<tr><td>45</td><td>@reservamini (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Manifesto impacto</td><td>"Para cada peca, 5 refeicoes completadas"</td><td>356K seg</td><td>Impacto social</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>46</td><td>Menina de 8 anos (BR)</td><td><span class="plat-badge plat-redes">Redes</span></td><td>Crianca denuncia</td><td>Compara dizeres roupas menino vs menina</td><td>Viral Catraca Livre</td><td>Indignacao genuina</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>47</td><td>@childhoodbrasil (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Manifesto emocional</td><td>"Nao vendemos roupa. Preservamos memorias."</td><td>96K seg</td><td>Memoria afetiva</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>48</td><td>@taylorvasquez__</td><td><span class="plat-badge plat-tiktok">TikTok</span></td><td>Identidade coletiva</td><td>Criou conceito "Type C Mom"</td><td>659K curtidas</td><td>Reconhecimento</td><td class="repl-ref">Referencia</td></tr>
+<tr><td>49</td><td>Trend Newborn Outfit</td><td><span class="plat-badge plat-multi">TikTok/IG</span></td><td>Nostalgia fisica</td><td>Mae veste bebe grande com roupa do nascimento</td><td>Alto engajamento</td><td>Passagem do tempo</td><td class="repl-sim">Sim</td></tr>
+<tr><td>50</td><td>@mamaeplugada (BR)</td><td><span class="plat-badge plat-ig">Instagram</span></td><td>Carrossel valores</td><td>"Crianca nao e mini adulto. 14 verdades."</td><td>Amplamente salvo</td><td>Validacao</td><td class="repl-sim">Sim</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 
-  <!-- IDEIAS: CARROSSÉIS -->
-  <div class="section">
-    <div class="section-title">Carrosséis de Alto Save — 5 Ideias</div>
-    <div class="grid-3" style="grid-template-columns: repeat(5, 1fr);">
-      <div class="idea-card"><div class="idea-num">09</div>
-        <span class="format-badge badge-carousel">Carrossel</span>
-        <h4>"De Segunda a Sexta com 5 Peças"</h4>
-        <p class="concept">5 peças = 5 looks para a semana escolar. Mãe salva para comprar depois.</p>
-        <span class="difficulty diff-medio">Médio</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">10</div>
-        <span class="format-badge badge-carousel">Carrossel</span>
-        <h4>"Por Que Não Vestimos Mini Adulto"</h4>
-        <p class="concept">Manifesto visual: criança é criança. O DNA da marca em slides.</p>
-        <span class="difficulty diff-medio">Médio</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">11</div>
-        <span class="format-badge badge-carousel">Carrossel</span>
-        <h4>"Guarda-Roupa Cápsula"</h4>
-        <p class="concept">Como montar guarda-roupa infantil versátil. Checklist salvável.</p>
-        <span class="difficulty diff-medio">Médio</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">12</div>
-        <span class="format-badge badge-carousel">Carrossel</span>
-        <h4>"Photo Dump Mensal"</h4>
-        <p class="concept">Fotos espontâneas e imperfeitas do mês. Estética da autenticidade.</p>
-        <span class="difficulty diff-facil">Fácil</span>
-      </div>
-      <div class="idea-card"><div class="idea-num">13</div>
-        <span class="format-badge badge-carousel">Carrossel</span>
-        <h4>"Antes de Comprar, Leia Isso"</h4>
-        <p class="concept">Educativo sobre tecidos, etiquetas e algodão. Autoridade + save.</p>
-        <span class="difficulty diff-medio">Médio</span>
-      </div>
-    </div>
-  </div>
+<!-- FORMAT RANKING -->
+<section class="section">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Ranking de Formatos</span></h2>
+<p class="section-subtitle">15 formatos rankeados por potencial viral</p>
+<div class="bar-chart">
+<div class="bar-row"><span class="bar-label">1. Transicao de Look</span><div class="bar-track"><div class="bar-fill" style="width:100%">Altissimo</div></div></div>
+<div class="bar-row"><span class="bar-label">2. Carrossel Educativo</span><div class="bar-track"><div class="bar-fill" style="width:92%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">3. Humor Materno</span><div class="bar-track"><div class="bar-fill" style="width:100%">Altissimo</div></div></div>
+<div class="bar-row"><span class="bar-label">4. GRWM Infantil</span><div class="bar-track"><div class="bar-fill" style="width:88%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">5. Mini-Me / Matching</span><div class="bar-track"><div class="bar-fill" style="width:88%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">6. Haul / Unboxing</span><div class="bar-track"><div class="bar-fill" style="width:85%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">7. ASMR Embalagem</span><div class="bar-track"><div class="bar-fill" style="width:85%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">8. Lookbook Sazonal</span><div class="bar-track"><div class="bar-fill" style="width:82%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">9. Hack de Mae</span><div class="bar-track"><div class="bar-fill" style="width:82%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">10. Manifesto de Marca</span><div class="bar-track"><div class="bar-fill" style="width:75%">Medio-Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">11. Crianca Escolhendo</span><div class="bar-track"><div class="bar-fill" style="width:100%">Altissimo</div></div></div>
+<div class="bar-row"><span class="bar-label">12. Nostalgia</span><div class="bar-track"><div class="bar-fill" style="width:85%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">13. Baby Fashion Show</span><div class="bar-track"><div class="bar-fill" style="width:82%">Alto</div></div></div>
+<div class="bar-row"><span class="bar-label">14. Debate / Posicao</span><div class="bar-track"><div class="bar-fill" style="width:100%">Altissimo</div></div></div>
+<div class="bar-row"><span class="bar-label">15. UGC Compilacao</span><div class="bar-track"><div class="bar-fill" style="width:65%">Medio</div></div></div>
+</div>
+</div>
+</section>
 
-  <!-- IDEIAS: STORIES + SÉRIES -->
-  <div class="section">
-    <div class="section-title">Stories Interativos + Séries Recorrentes</div>
-    <div class="grid-4">
-      <div class="idea-card">
-        <span class="format-badge badge-story">Story</span>
-        <h4>🎯 Quiz de Personalidade</h4>
-        <p class="concept">Perguntas sobre a criança → sugere look da coleção.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-story">Story</span>
-        <h4>📸 Ciclo UGC</h4>
-        <p class="concept">Clientes mandam fotos → Maricota reposta com carinho.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-story">Story</span>
-        <h4>🤔 "Você Sabia?"</h4>
-        <p class="concept">Curiosidade semanal sobre moda infantil + enquete.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-story">Story</span>
-        <h4>🔓 Bastidores</h4>
-        <p class="concept">De onde vem cada peça — do tecido à criança usando.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-serie">Série Semanal</span>
-        <h4>✨ Look da Segunda</h4>
-        <p class="concept">Toda segunda, um look novo. Ritual que a audiência espera.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-serie">Série Semanal</span>
-        <h4>👧 Criança Real da Semana</h4>
-        <p class="concept">Toda sexta, destaque de cliente real. Motor de UGC orgânico.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-serie">Série Quinzenal</span>
-        <h4>💡 Dica de Mãe pra Mãe</h4>
-        <p class="concept">Dicas práticas: lavar sem desbotar, medir tamanho, tirar mancha.</p>
-      </div>
-      <div class="idea-card">
-        <span class="format-badge badge-serie">Série Mensal</span>
-        <h4>🦋 A Borboleta do Mês</h4>
-        <p class="concept">Peça destaque + história da criação. A borboleta como ritual.</p>
-      </div>
-    </div>
-  </div>
+<!-- EMOTIONAL TRIGGERS -->
+<section class="section" style="background:#faf7ff;padding:50px 0">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Ranking de Gatilhos Emocionais</span></h2>
+<p class="section-subtitle">Os 12 gatilhos que movem o compartilhamento</p>
+<div class="bar-chart">
+<div class="bar-row"><span class="bar-label">1. Identificacao Materna</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:100%">85%+</div></div></div>
+<div class="bar-row"><span class="bar-label">2. Fofura / Ternura</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:94%">80%+</div></div></div>
+<div class="bar-row"><span class="bar-label">3. Humor / Riso</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:82%">70%+</div></div></div>
+<div class="bar-row"><span class="bar-label">4. Surpresa / Transformacao</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:76%">65%+</div></div></div>
+<div class="bar-row"><span class="bar-label">5. Orgulho Materno</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:71%">60%+</div></div></div>
+<div class="bar-row"><span class="bar-label">6. Praticidade / Utilidade</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:65%">55%+</div></div></div>
+<div class="bar-row"><span class="bar-label">7. Nostalgia / Tempo</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:53%">45%+</div></div></div>
+<div class="bar-row"><span class="bar-label">8. Amor Familiar</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:47%">40%+</div></div></div>
+<div class="bar-row"><span class="bar-label">9. Indignacao / Protecao</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:41%">35%+</div></div></div>
+<div class="bar-row"><span class="bar-label">10. Aspiracao / Desejo</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:35%">30%+</div></div></div>
+<div class="bar-row"><span class="bar-label">11. Economia</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:29%">25%+</div></div></div>
+<div class="bar-row"><span class="bar-label">12. Pertencimento</span><div class="bar-track"><div class="bar-fill bar-fill-warm" style="width:24%">20%+</div></div></div>
+</div>
+</div>
+</section>
 
-  <!-- CALENDÁRIO -->
-  <div class="section">
-    <div class="section-title">Calendário Semanal</div>
-    <div class="card">
-      <table class="calendar">
-        <thead>
-          <tr><th>Dia</th><th>Formato</th><th>Conteúdo</th><th>Plataforma</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="day">Segunda</td><td>Reel</td><td>🦋 "Look da Segunda" (#18)</td><td>Instagram + TikTok</td></tr>
-          <tr><td class="day">Terça</td><td>Stories</td><td>🤔 "Você Sabia?" (#16) ou Quiz (#14)</td><td>Instagram Stories</td></tr>
-          <tr><td class="day">Quarta</td><td>Carrossel</td><td>💾 Rodízio das ideias 9–13</td><td>Instagram</td></tr>
-          <tr><td class="day">Quinta</td><td>TikTok / Reel</td><td>🔥 Viral da semana (ideias 1–8)</td><td>TikTok + Reels</td></tr>
-          <tr><td class="day">Sexta</td><td>Post / Story</td><td>👧 "Criança Real da Semana" (#19)</td><td>Instagram</td></tr>
-          <tr><td class="day">Sábado</td><td>Story casual</td><td>📱 Bastidores de fim de semana</td><td>Instagram Stories</td></tr>
-          <tr><td class="day">Domingo</td><td>TikTok (opcional)</td><td>😂 Humor / POV (#4) se tiver conteúdo</td><td>TikTok</td></tr>
-        </tbody>
-      </table>
-      <div style="margin-top:16px;display:flex;gap:24px;font-size:0.85rem;color:var(--text-light);">
-        <div>📱 <strong>IG Reels:</strong> 18h–21h</div>
-        <div>📸 <strong>Carrosséis:</strong> 12h–14h ou 20h–22h</div>
-        <div>🎵 <strong>TikTok:</strong> 19h–22h</div>
-        <div>📖 <strong>Stories:</strong> 7h–9h e 19h–22h</div>
-      </div>
-    </div>
-  </div>
+<!-- 30 HOOKS BANK -->
+<section class="section">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Banco de 30 Hooks</span></h2>
+<p class="section-subtitle">Organizados por categoria — prontos para usar</p>
+<div class="hooks-section">
+<div class="hook-cat">
+<h4 style="color:#bf5cf8">Identificacao Materna</h4>
+<div class="hook-pills">
+<span class="pill">"Marca uma mae que tem os filhos desse modelo"</span>
+<span class="pill">"Diga que voce e mae de menino sem dizer"</span>
+<span class="pill">"Minha manha EXATAMENTE assim"</span>
+<span class="pill">"Toda mae ja viveu isso nas compras"</span>
+<span class="pill">"Voce tambem corre atras do filho pelado?"</span>
+</div>
+</div>
+<div class="hook-cat">
+<h4 style="color:#ff6fd9">Revelacao / Surpresa</h4>
+<div class="hook-pills">
+<span class="pill">"Voce ta usando o body do bebe ERRADO"</span>
+<span class="pill">"Voce nao vai acreditar o que tem nessa caixa"</span>
+<span class="pill">"Ela tem 3 anos e mais estilo do que eu"</span>
+<span class="pill">"Nao pedimos passarela, mas ela fez mesmo assim"</span>
+<span class="pill">"Reacao dela quando viu o look novo"</span>
+</div>
+</div>
+<div class="hook-cat">
+<h4 style="color:#32e1c5">Praticidade / Economia</h4>
+<div class="hook-pills">
+<span class="pill">"15 pecas = 40+ looks. Vou te mostrar como"</span>
+<span class="pill">"Nunca mais sofra na hora de vestir pra escola"</span>
+<span class="pill">"Eliminei 100% das brigas de roupa pela manha"</span>
+<span class="pill">"5 pecas. 10 looks. Sem repetir na semana"</span>
+<span class="pill">"Esse hack de R$20 mudou minha vida de mae"</span>
+</div>
+</div>
+<div class="hook-cat">
+<h4 style="color:#00bbf7">Protecao / Educacao</h4>
+<div class="hook-pills">
+<span class="pill">"Voce sabe o que toca a pele do seu filho?"</span>
+<span class="pill">"Antes de comprar roupa pra crianca, leia isso"</span>
+<span class="pill">"O tecido pode estar prejudicando a pele dele"</span>
+<span class="pill">"Nao compre nada antes de ler esse carrossel"</span>
+<span class="pill">"Comprei desconfiada e chegou MUITO melhor"</span>
+</div>
+</div>
+<div class="hook-cat">
+<h4 style="color:#ff884d">Urgencia / FOMO</h4>
+<div class="hook-pills">
+<span class="pill">"Volta as aulas chegando. Seu bolso agradece"</span>
+<span class="pill">"O drop mais esperado do ano chegou"</span>
+<span class="pill">"As cores que vao dominar o verao do seu filho"</span>
+<span class="pill">"Seu filho so precisa de 12 pecas pro mes"</span>
+<span class="pill">"Nao faca X antes de ver Y"</span>
+</div>
+</div>
+<div class="hook-cat">
+<h4 style="color:#ffda42">Humor / Controversia</h4>
+<div class="hook-pills">
+<span class="pill">"Crianca nao e mini adulto. Crianca e crianca."</span>
+<span class="pill">"47 pecas novas. Adivinhem o que escolheu?"</span>
+<span class="pill">"A roupa que machuca a crianca machuca o dia"</span>
+<span class="pill">"Vestido de princesa. De novo. Pelo 6o dia."</span>
+<span class="pill">"POV: voce nao sabe o que aconteceu pra foto"</span>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- ORDEM DE PRIORIDADE -->
-  <div class="section">
-    <div class="section-title">Por Onde Começar</div>
-    <div class="priority-card">
-      <span class="week-badge">Semana 1</span>
-      <div class="ideas"><strong>#4</strong> POV Mãe (20min de produção) + <strong>#2</strong> Ela Escolheu (zero edição) + <strong>#15</strong> UGC Stories</div>
-    </div>
-    <div class="priority-card">
-      <span class="week-badge">Semana 2</span>
-      <div class="ideas"><strong>#1</strong> Do Caos ao Look (primeiro teste de transição) + <strong>#9</strong> Carrossel 5 Looks (primeiro save)</div>
-    </div>
-    <div class="priority-card">
-      <span class="week-badge">Semana 3</span>
-      <div class="ideas"><strong>#6</strong> Realidade vs. Expectativa + <strong>#18</strong> Estabelecer "Look da Segunda"</div>
-    </div>
-  </div>
+<!-- 10 OPPORTUNITIES -->
+<section class="section" style="background:#faf7ff;padding:50px 0">
+<div class="container">
+<h2 class="section-title">🦋 <span class="gradient-text">10 Oportunidades para a Maricota</span></h2>
+<p class="section-subtitle">Acoes concretas baseadas nos 590 virais analisados</p>
+<div class="opp-grid">
+<div class="opp">
+<div class="opp-num">Oportunidade 1</div>
+<h4>Serie "Nao Veste Mini Adulto"</h4>
+<p>Serie recorrente de Reels + carrosseis posicionando a Maricota como defensora da infancia autentica. Surfar o debate sobre adultizacao (51M views, lei federal).</p>
+<div class="opp-meta"><span>Reel + Carrossel</span> <span>Carol na camera</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 2</div>
+<h4>Conteudo "100% Algodao" Educativo</h4>
+<p>Carrosseis e Reels sobre superioridade do algodao para pele infantil. Dados reais sobre quimicos em fast fashion como gancho de protecao maternal.</p>
+<div class="opp-meta"><span>Carrossel + Reel</span> <span>@brasmodaoficial: 12K saves</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 3</div>
+<h4>ASMR de Embalagem + Bastidores</h4>
+<p>Videos curtos do processo de embalar pedidos com papel de seda, fitinha, tag manuscrita. Identidade visual ja e visualmente rica.</p>
+<div class="opp-meta"><span>TikTok/Reels 15-30s</span> <span>#packingorders bilhoes views</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 4</div>
+<h4>Carrosseis "X Pecas = Y Looks"</h4>
+<p>Carrosseis sazonais mostrando como combinar pecas da loja em multiplos looks. Guarda-roupa capsula adaptado. Catalogo disfarçado.</p>
+<div class="opp-meta"><span>Carrossel 8-10 slides</span> <span>Altissima taxa de save</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 5</div>
+<h4>UGC Sistematizado #FamiliaMaricota</h4>
+<p>Clientes postam fotos dos filhos com hashtag exclusiva. Repost semanal em carrossel. UGC gera 3x mais ROI que campanhas tradicionais.</p>
+<div class="opp-meta"><span>Compilacao UGC</span> <span>Loop virtuoso</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 6</div>
+<h4>"Memorias em Algodao"</h4>
+<p>Serie sobre roupa como objeto de memoria: roupinha que nao cabe, primeiro look de festa, outfit do primeiro dia de escola. Comentarios longos = sinal forte.</p>
+<div class="opp-meta"><span>Reels + Carrossel</span> <span>Nostalgia + engajamento</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 7</div>
+<h4>Identidade Local (Campos Altos/MG)</h4>
+<p>"Moda infantil de Minas para o Brasil." Usar a origem interiorana como diferencial. Autenticidade impossivel de replicar por marcas grandes.</p>
+<div class="opp-meta"><span>Reel da loja + cidade</span> <span>Modelo colombiano validado</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 8</div>
+<h4>Drops Sazonais com Escassez</h4>
+<p>Colecoes com data marcada, quantidade limitada. "Nova estampa chega sexta as 18h. 50 pecas. Quando acabar, acabou." Cria urgencia e buzz organico.</p>
+<div class="opp-meta"><span>Stories + Reel reveal</span> <span>Kyte Baby modelo</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 9</div>
+<h4>Serie "Mae para Mae" — Carol Direto</h4>
+<p>Fundadora falando direto para camera sobre curadoria, por que nao vende certos tipos de pecas, dicas de roupa de qualidade. @coloraloja: 930K likes.</p>
+<div class="opp-meta"><span>Reel 30-60s</span> <span>Humaniza a marca</span></div>
+</div>
+<div class="opp">
+<div class="opp-num">Oportunidade 10</div>
+<h4>Lives de Lancamento de Colecao</h4>
+<p>Lives com criancas desfilando, votacao nos comentarios, venda direta. Nenhuma marca infantil regional usa live consistentemente — espaco vazio.</p>
+<div class="opp-meta"><span>Live 30-60 min</span> <span>Applecrumby: 19,2x ROAS</span></div>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- BANCO DE HOOKS -->
-  <div class="section">
-    <div class="section-title">Banco de Hooks — 20 Ganchos Prontos</div>
-    <div class="card">
-      <h4 style="color:var(--purple);margin-bottom:4px;">🎣 Curiosidade</h4>
-      <div class="hook-pill">"Ela nem sabia o que estava por vir..."</div>
-      <div class="hook-pill">"Tentei fotografar essa roupa. Olha o que aconteceu."</div>
-      <div class="hook-pill">"Comprei achando que ia ser uma briga. Me surpreendi."</div>
-      <div class="hook-pill">"Essa foi a peça mais pedida do mês — você vai entender o porquê."</div>
-      <div class="hook-pill">"Nunca imaginei que esse look fosse tão versátil. Olha:"</div>
+<!-- 4-WEEK CALENDAR -->
+<section class="section">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">Banco de Ideias de Conteudo</span></h2>
+<p class="section-subtitle">24 ideias prontas para usar — escolha na ordem que fizer sentido para voce</p>
 
-      <h4 style="color:var(--pink);margin-top:16px;margin-bottom:4px;">💖 Identificação</h4>
-      <div class="hook-pill">"POV: sua filha decide que tem uma roupa favorita e ponto final."</div>
-      <div class="hook-pill">"Toda mãe já viveu essa cena. Conta aqui se for você."</div>
-      <div class="hook-pill">"Se você não veste mini adulto no seu filho, esse vídeo é pra você."</div>
-      <div class="hook-pill">"Esse look passou pela escola, pelo parque e pelo molho de macarrão."</div>
-      <div class="hook-pill">"O caos da manhã de segunda-feira, mas com muito estilo no final."</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;">
 
-      <h4 style="color:var(--teal);margin-top:16px;margin-bottom:4px;">🪄 Transformação</h4>
-      <div class="hook-pill">"Antes: pijama. Depois: borboleta."</div>
-      <div class="hook-pill">"Do guarda-roupa bagunçado ao look do dia em 30 segundos."</div>
-      <div class="hook-pill">"Ela era casual. Depois de 5 segundos, era fashion."</div>
-      <div class="hook-pill">"A transformação que toda semana começa aqui em casa."</div>
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #bf5cf8;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Carrossel</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Por que 100% algodao faz diferenca para a pele do seu filho</h4>
+<p style="font-size:.82rem;color:#888;">Carrossel educativo com dados sobre sinteticos vs algodao. Alto save rate.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#bf5cf8;font-weight:500;">Padrao: Educativo Salvavel</div>
+</div>
 
-      <h4 style="color:var(--blue);margin-top:16px;margin-bottom:4px;">💾 Utilidade</h4>
-      <div class="hook-pill">"5 looks para a semana toda — anota antes que você precise."</div>
-      <div class="hook-pill">"Como montar 7 looks diferentes com 4 peças — salva esse."</div>
-      <div class="hook-pill">"O segredo para nunca mais ficar sem ideia de look pra escola."</div>
-      <div class="hook-pill">"Tudo que você precisa saber antes de comprar roupa infantil — arrasta."</div>
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #32e1c5;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e0f7fa;color:#00695c;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">ASMR embalando pedido — papel de seda, fita, tag manuscrita</h4>
+<p style="font-size:.82rem;color:#888;">Video curto do cuidado artesanal na embalagem. #packingorders tem bilhoes de views.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#32e1c5;font-weight:500;">Padrao: Bastidores Small Business</div>
+</div>
 
-      <h4 style="color:var(--orange);margin-top:16px;margin-bottom:4px;">🧡 Emocionais</h4>
-      <div class="hook-pill">"Ela pediu pra usar essa roupa no dia mais especial dela."</div>
-      <div class="hook-pill">"Esse momento me lembrou por que a gente faz o que faz."</div>
-    </div>
-  </div>
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff6fd9;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#fce4ec;color:#c62828;padding:3px 10px;border-radius:10px;font-weight:500;">Reel 30s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Por que a Maricota nao veste mini adultos — Carol na camera</h4>
+<p style="font-size:.82rem;color:#888;">Fundadora falando direto sobre o posicionamento. Tema mais quente do nicho (51M views no Felca).</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff6fd9;font-weight:500;">Padrao: Debate / Posicionamento</div>
+</div>
 
-  <!-- NÃO FAÇA -->
-  <div class="section">
-    <div class="section-title">O que NÃO Fazer</div>
-    <div class="grid-2">
-      <div>
-        <div class="dont-card"><strong>❌ Criança posando como adulto</strong> — poses de modelo frias, expressões sérias, encenação forçada</div>
-        <div class="dont-card"><strong>❌ Foco em preço/promoção</strong> — "aproveite a oferta", "combo de X por R$" = percepção de marca barata</div>
-        <div class="dont-card"><strong>❌ Produto sem criança</strong> — roupa no cabide não vende. Criança em movimento vende.</div>
-        <div class="dont-card"><strong>❌ Filtros pesados</strong> — tiram a cor vibrante natural das peças e da identidade</div>
-      </div>
-      <div>
-        <div class="do-card"><strong>✅ Criança sendo criança</strong> — espontânea, em movimento, sorrindo de verdade</div>
-        <div class="do-card"><strong>✅ Celular na mão</strong> — conteúdo lo-fi/autêntico performa melhor que produção profissional</div>
-        <div class="do-card"><strong>✅ Responder comentários em 2h</strong> — multiplica o alcance do post</div>
-        <div class="do-card"><strong>✅ Mostrar quem está por trás</strong> — humanização é o diferencial da marca</div>
-      </div>
-    </div>
-  </div>
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #00bbf7;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Transicao: crianca de pijama -> look Maricota no beat</h4>
+<p style="font-size:.82rem;color:#888;">Formato com 4x mais compartilhamentos. 600M+ views na hashtag #outfitswitch.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#00bbf7;font-weight:500;">Padrao: Transicao de Look</div>
+</div>
 
-  <!-- MANIFESTO -->
-  <div class="manifesto">
-    <span class="butterfly">🦋</span>
-    A borboleta não é só um logo — é uma metáfora viva.<br>
-    Cada criança que usa Maricota está em metamorfose,<br>
-    descobrindo quem é, voando do seu jeito.<br><br>
-    <strong>Filme com o celular. Use a criança real. Ria junto.<br>
-    Mostre o caos e o carinho. O algoritmo vai fazer o resto.</strong>
-  </div>
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff884d;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Carrossel 10 slides</span>
+<span style="font-size:.75rem;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:10px;font-weight:500;">Medio</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">5 pecas da Maricota = 10 looks para a semana</h4>
+<p style="font-size:.82rem;color:#888;">Guarda-roupa capsula adaptado. Altissima taxa de save.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff884d;font-weight:500;">Padrao: Educativo Salvavel</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ffda42;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Como eu vestiria minha filha vs como ela se vestiu</h4>
+<p style="font-size:.82rem;color:#888;">Split screen com pecas Maricota. Gatilho: humor + "isso sou eu".</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ffda42;font-weight:500;">Padrao: Humor Materno</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #32e1c5;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#fce4ec;color:#c62828;padding:3px 10px;border-radius:10px;font-weight:500;">Reel 20s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Crianca de cliente reagindo ao ver a roupa Maricota nova</h4>
+<p style="font-size:.82rem;color:#888;">Reacao genuina = conteudo. Pedir para clientes filmarem quando recebem o pedido.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#32e1c5;font-weight:500;">Padrao: Unboxing / Reacao Real</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #bf5cf8;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 30s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Pecas que a Carol NAO vende na Maricota — e por que</h4>
+<p style="font-size:.82rem;color:#888;">Formato de posicionamento que gera debate acalorado e alta retencao.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#bf5cf8;font-weight:500;">Padrao: Debate / Posicionamento</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff6fd9;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Carrossel UGC</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">#FamiliaMaricota — 6 fotos de clientes reais</h4>
+<p style="font-size:.82rem;color:#888;">UGC gera 3x mais ROI. 84% dos consumidores dizem que influencia decisao.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff6fd9;font-weight:500;">Padrao: Prova Social Real</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #00bbf7;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Marca uma mae que tem os filhos desse modelo</h4>
+<p style="font-size:.82rem;color:#888;">CTA de marcacao = distribuicao exponencial. Referencia: @tatiinfante 2,4M likes.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#00bbf7;font-weight:500;">Padrao: Identificacao + CTA</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff884d;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#fce4ec;color:#c62828;padding:3px 10px;border-radius:10px;font-weight:500;">Reel 20s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">A roupinha que nao cabe mais — peca Maricota + musica emocional</h4>
+<p style="font-size:.82rem;color:#888;">Comentarios emocionais longos = sinal fortissimo para algoritmo. Maes mandam para avos.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff884d;font-weight:500;">Padrao: Nostalgia / Passagem do Tempo</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #32e1c5;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Mini-desfile em casa: crianca com look Maricota + musica de passarela</h4>
+<p style="font-size:.82rem;color:#888;">Custo zero, potencial altissimo. Baby Fashion Show em casa.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#32e1c5;font-weight:500;">Padrao: Transicao / Reveal</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #bf5cf8;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Carrossel 8 slides</span>
+<span style="font-size:.75rem;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:10px;font-weight:500;">Medio</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Como cuidar das roupas de algodao do seu filho para durar mais</h4>
+<p style="font-size:.82rem;color:#888;">Guia de lavagem. Conteudo evergreen que gera trafego por meses.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#bf5cf8;font-weight:500;">Padrao: Educativo Salvavel</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff6fd9;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 30s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">GRWM arrumando minha filha para o passeio — processo real</h4>
+<p style="font-size:.82rem;color:#888;">Get Ready With Me infantil. Alta retencao: maes assistem ate o final para ver o look.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff6fd9;font-weight:500;">Padrao: GRWM Kids</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ffda42;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#fce4ec;color:#c62828;padding:3px 10px;border-radius:10px;font-weight:500;">Reel 15s</span>
+<span style="font-size:.75rem;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:10px;font-weight:500;">Medio</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Look mae e filha com pecas Maricota — matching reveal</h4>
+<p style="font-size:.82rem;color:#888;">Hashtag #mommyandme tem bilhoes de views. Altissima taxa de saves e shares.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ffda42;font-weight:500;">Padrao: Mini-Me</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #00bbf7;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Hack: como tirar mancha de tinta guache — demo ao vivo</h4>
+<p style="font-size:.82rem;color:#888;">Transformacao visual = alivio instantaneo. Miss Mouth's esgotou apos virais desse tipo.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#00bbf7;font-weight:500;">Padrao: Hack Pratico</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff884d;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Carrossel 10 slides</span>
+<span style="font-size:.75rem;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:10px;font-weight:500;">Medio</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Lookbook sazonal: 8 looks completos Maricota</h4>
+<p style="font-size:.82rem;color:#888;">Posts de lookbook sazonal tem saves que superam as curtidas.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff884d;font-weight:500;">Padrao: Lookbook Sazonal</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #32e1c5;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok 20s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Um dia por tras da Maricota — vlog rapido da loja</h4>
+<p style="font-size:.82rem;color:#888;">Mostrar curadoria de pecas, embalagem, rotina. Humaniza a marca.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#32e1c5;font-weight:500;">Padrao: Bastidores Small Business</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #bf5cf8;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#fce4ec;color:#c62828;padding:3px 10px;border-radius:10px;font-weight:500;">Reel 30s</span>
+<span style="font-size:.75rem;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:10px;font-weight:500;">Medio</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Tabela de medidas: nunca mais erre o tamanho na compra online</h4>
+<p style="font-size:.82rem;color:#888;">Resolve dor real de compra online. Conteudo evergreen com alto save.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#bf5cf8;font-weight:500;">Padrao: Educativo Salvavel</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff6fd9;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:10px;font-weight:500;">TikTok + IG Reel 15s</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Drop de colecao nova: reveal das pecas com antecipacao</h4>
+<p style="font-size:.82rem;color:#888;">Mecanica de escassez: "50 pecas. Quando acabar, acabou." Kyte Baby e Little Sleepies venderam milhoes assim.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff6fd9;font-weight:500;">Padrao: Haul / Reveal</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ffda42;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Stories</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Enquete: Qual look voce prefere? A ou B?</h4>
+<p style="font-size:.82rem;color:#888;">Stickers de enquete = interacao ativa = sinal forte para algoritmo dos Stories.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ffda42;font-weight:500;">Padrao: Engajamento</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #00bbf7;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Stories Bastidores</span>
+<span style="font-size:.75rem;background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:10px;font-weight:500;">Facil</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Novidades que chegaram na loja — o que acham?</h4>
+<p style="font-size:.82rem;color:#888;">Gera antecipacao e participacao. Alto percentual de conclusao nos Stories.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#00bbf7;font-weight:500;">Padrao: Antecipacao / Bastidores</div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #ff884d;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:.75rem;background:#f3e5f5;color:#7b1fa2;padding:3px 10px;border-radius:10px;font-weight:500;">Carrossel Manifesto</span>
+<span style="font-size:.75rem;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:10px;font-weight:500;">Medio</span>
+</div>
+<h4 style="font-size:.95rem;font-weight:600;margin-bottom:6px;">Por que a gente nao veste mini adulto — manifesto visual Maricota</h4>
+<p style="font-size:.82rem;color:#888;">Carrossel 10-12 slides: posicionamento + exemplos visuais + borboleta. Alto save + compartilhamento.</p>
+<div style="margin-top:8px;font-size:.75rem;color:#ff884d;font-weight:500;">Padrao: Identidade de Tribo</div>
+</div>
 
 </div>
+</div>
+</section>
+
+<!-- DO / DON'T -->
+<section class="section" style="background:#faf7ff;padding:50px 0">
+<div class="container">
+<h2 class="section-title"><span class="gradient-text">O Que Fazer e Nao Fazer</span></h2>
+<p class="section-subtitle">Principios estrategicos dos 590 virais analisados</p>
+<div class="dodont-grid">
+<div class="dodont-col">
+<h3 style="color:#e53935">Nao Faca</h3>
+<div class="dont-card">Nao espere pelo video perfeito — consistencia supera perfeicao</div>
+<div class="dont-card">Nao copie estetica de marca grande — autenticidade e a vantagem</div>
+<div class="dont-card">Nao use hooks generos — seja especifica para maes de criancas</div>
+<div class="dont-card">Nao faca videos longos demais — 7-15s no TikTok, 15-30s em Reels</div>
+<div class="dont-card">Nao ignore os saves — focar so em curtidas e miopia de metricas</div>
+<div class="dont-card">Nao poste sem CTA — todo conteudo precisa de uma acao clara</div>
+<div class="dont-card">Nao vista criancas como mini adultos — isso e o oposto da marca</div>
+<div class="dont-card">Nao demore mais de 1,5s para o hook — o scroll e implacavel em 2026</div>
+</div>
+<div class="dodont-col">
+<h3 style="color:#1a9e7f">Faca</h3>
+<div class="do-card">Poste com consistencia — todo dia e melhor que um video perfeito por mes</div>
+<div class="do-card">Capture momentos reais das criancas — espontaneidade viraliza</div>
+<div class="do-card">Crie conteudo salvavel — carrosseis educativos geram 3x mais saves</div>
+<div class="do-card">Use audio trending — o algoritmo favorece sons em alta</div>
+<div class="do-card">Incentive UGC — peca para clientes postarem com #FamiliaMaricota</div>
+<div class="do-card">Posicione-se firmemente — "Nao veste mini adulto" e DNA da marca</div>
+<div class="do-card">Filme os bastidores — ASMR de embalagem e conteudo de custo zero</div>
+<div class="do-card">Use CTAs de marcacao — "Marca uma mae que..." distribui exponencialmente</div>
+</div>
+</div>
+</div>
+</section>
 
 <!-- FOOTER -->
-<div class="footer">
-  <div class="container">
-    <p><strong>Maricota Store Infantil</strong> — Guia de Conteúdo | Tendências & Virais 2026</p>
-    <p>Gerado em 24 de Março de 2026</p>
-    <p style="margin-top:4px;">Baseado em: 10 virais analisados + 20 tendências mapeadas + DNA da marca</p>
-    <a href="index.html" style="display:inline-block;margin-top:16px;padding:10px 24px;background:linear-gradient(135deg,#bf5cf8,#ff6fd9);color:white;text-decoration:none;border-radius:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:14px;">← Voltar ao Diagnóstico Estratégico</a>
-  </div>
-</div>
+<footer class="footer">
+<blockquote>
+🦋 "A Maricota ja tem o DNA certo — posicionamento anti-mini-adulto, 100% algodao, identidade visual vibrante, origem autentica. O que falta e apenas ativar isso em conteudo sistematico."
+</blockquote>
+<p class="brand">Maricota Store Infantil — Campos Altos/MG<br>Pesquisa de 590 virais consolidada em 24/03/2026</p>
+<a href="index.html" style="display:inline-block;margin-top:16px;padding:10px 24px;background:linear-gradient(135deg,#bf5cf8,#ff6fd9);color:white;text-decoration:none;border-radius:12px;font-weight:500;font-size:14px;">← Voltar ao Diagnóstico Estratégico</a>
+</footer>
 
 </body>
 </html>
